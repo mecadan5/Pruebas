@@ -14,7 +14,7 @@ import javax.persistence.Transient;
 
 @Entity
 public class Administrador extends Usuario{
-	//aa
+	//aa555555555555555555
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	Long id;
