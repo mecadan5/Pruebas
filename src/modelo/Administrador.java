@@ -14,6 +14,8 @@ import javax.persistence.Transient;
 
 @Entity
 public class Administrador extends Usuario{
+	
+	
 	//pruebota
 	
 	
