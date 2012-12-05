@@ -17,7 +17,7 @@ public class Administrador extends Usuario{
 	
 	
 	//pruebota
-	
+	//excelente github555555
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
