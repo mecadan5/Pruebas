@@ -75,8 +75,9 @@ public class usuarios extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("");
-		String logo = getClass().getClassLoader().getResource("assets/logochibcha.png").getPath();
-		label.setIcon(new ImageIcon(logo));
+		String absolutePath = System.getProperty("user.dir");
+		System.out.print(logo);
+		label.setIcon(new ImageIcon(absolutePath+"/src/assets/logochibcha.png"));
 		label.setBounds(24, 6, 396, 104);
 		contentPane.add(label);
 		
@@ -100,7 +101,7 @@ public class usuarios extends JFrame {
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnFacturacin.setIcon(new ImageIcon("assets/bill.png"));
+		btnFacturacin.setIcon(new ImageIcon(absolutePath+"/src/assets/bill.png"));
 		btnFacturacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -111,7 +112,7 @@ public class usuarios extends JFrame {
 		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
 		btnGestionDeUsuarios.setEnabled(false);
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		btnGestionDeUsuarios.setIcon(new ImageIcon("assets/user.png"));
+		btnGestionDeUsuarios.setIcon(new ImageIcon(absolutePath+"/src/assets/user.png"));
 		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
 		contentPane.add(btnGestionDeUsuarios);
 		
@@ -122,7 +123,7 @@ public class usuarios extends JFrame {
 		
 		JLabel lblBusqueda = new JLabel("Busqueda");
 		lblBusqueda.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblBusqueda.setIcon(new ImageIcon("assets/search.png"));
+		lblBusqueda.setIcon(new ImageIcon(absolutePath+"/src/assets/search.png"));
 		lblBusqueda.setBounds(25, 26, 151, 32);
 		panel.add(lblBusqueda);
 		
@@ -134,7 +135,7 @@ public class usuarios extends JFrame {
 		txtIntroduzcaNombreUsuario.setColumns(10);
 		
 		JButton button = new JButton("Agregar Paquete");
-		button.setIcon(new ImageIcon("assets/plus.png"));
+		button.setIcon(new ImageIcon(absolutePath+"/src/assets/plus.png"));
 		button.setBounds(497, 18, 187, 45);
 		panel.add(button);
 		
