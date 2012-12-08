@@ -5,15 +5,19 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
@@ -40,7 +44,7 @@ public class usuarios extends JFrame {
 	private static final String PERSISTENCE_UNIT_NAME = null;
 	private JPanel contentPane;
 	private JTextField txtIntroduzcaNombreUsuario;
-	
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -71,7 +75,8 @@ public class usuarios extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/logochibcha.png"));
+		String logo = getClass().getClassLoader().getResource("assets/logochibcha.png").getPath();
+		label.setIcon(new ImageIcon(logo));
 		label.setBounds(24, 6, 396, 104);
 		contentPane.add(label);
 		
@@ -95,7 +100,7 @@ public class usuarios extends JFrame {
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnFacturacin.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/chibchaweb/assets/bill.png"));
+		btnFacturacin.setIcon(new ImageIcon("assets/bill.png"));
 		btnFacturacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -106,7 +111,7 @@ public class usuarios extends JFrame {
 		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
 		btnGestionDeUsuarios.setEnabled(false);
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		btnGestionDeUsuarios.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/chibchaweb/assets/user.png"));
+		btnGestionDeUsuarios.setIcon(new ImageIcon("assets/user.png"));
 		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
 		contentPane.add(btnGestionDeUsuarios);
 		
@@ -117,7 +122,7 @@ public class usuarios extends JFrame {
 		
 		JLabel lblBusqueda = new JLabel("Busqueda");
 		lblBusqueda.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblBusqueda.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/search.png"));
+		lblBusqueda.setIcon(new ImageIcon("assets/search.png"));
 		lblBusqueda.setBounds(25, 26, 151, 32);
 		panel.add(lblBusqueda);
 		
@@ -129,7 +134,7 @@ public class usuarios extends JFrame {
 		txtIntroduzcaNombreUsuario.setColumns(10);
 		
 		JButton button = new JButton("Agregar Paquete");
-		button.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/plus.png"));
+		button.setIcon(new ImageIcon("assets/plus.png"));
 		button.setBounds(497, 18, 187, 45);
 		panel.add(button);
 		
@@ -155,7 +160,7 @@ public class usuarios extends JFrame {
 		table.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre", "# Orden" ,"Pagado","Paquete","Plan de Pago","Opciones de Gesti—n"
+				"Nombre", "# Orden" ,"Pagado","Paquete","Plan de Pago","Opciones de Gestion","Editar","Borrar"
 			}
 		));
 		table.getColumnModel().getColumn(0).setPreferredWidth(180);
@@ -165,6 +170,65 @@ public class usuarios extends JFrame {
 		table.getColumnModel().getColumn(4).setPreferredWidth(100);
 		table.getColumnModel().getColumn(5).setPreferredWidth(300);
 		table.getTableHeader();
+		
+		int numRows = table.getRowCount();
+		int numCols = table.getColumnCount();
+		
+		Action editar = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action eliminar = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		
+		for (int i = 0; i <15; i++) {
+			
+			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+			String datos[] = new String[3];
+			
+			for (int j = 0; j<3; j++) {
+			datos[j]="Algo"+j;
+			}
+		
+			modelo.addRow(datos);
+
+			}
+		
+		/*
+		for (int i = 0; i < a.size(); i++) {
+		Usuario usuario1= (Usuario) a.get(i);
+		String b = a.get(i).toString();
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]=String.valueOf(usuario1.getId());
+		datos[1]=usuario1.getcontrasenia();
+		datos[2]=usuario1.getNombre();
+		datos[3]=b.substring(7);
+		modelo.addRow(datos);
+		
+		
+		//modelo.addRow(gay,gay2,gay3);
+		}*/
+		ButtonColumn botonEditar = new ButtonColumn(table, editar, 7);
+		botonEditar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 8);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
 		
 		
 		
