@@ -76,7 +76,7 @@ public class usuarios extends JFrame {
 		
 		JLabel label = new JLabel("");
 		String absolutePath = System.getProperty("user.dir");
-		System.out.print(logo);
+		System.out.print(absolutePath);
 		label.setIcon(new ImageIcon(absolutePath+"/src/assets/logochibcha.png"));
 		label.setBounds(24, 6, 396, 104);
 		contentPane.add(label);
