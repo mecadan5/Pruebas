@@ -191,7 +191,10 @@ public class facturacion extends JFrame {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
 			String datos[] = new String[3];
-			datos[0]="Paquete"+i;
+			
+			for (int j = 0; j<3; j++) {
+			datos[j]="Algo"+j;
+			}
 		
 			modelo.addRow(datos);
 
@@ -256,8 +259,7 @@ public class facturacion extends JFrame {
 			}
 		));
 		
-		JButton btnNewButton2 = new JButton("New button");
-		scrollPane_1.setColumnHeaderView(btnNewButton2);
+	
 		table2.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table2.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table2.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -307,8 +309,10 @@ public class facturacion extends JFrame {
 		for (int i = 0; i <15; i++) {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table2.getModel();
-			String datos[] = new String[3];
-			datos[0]="Paquete"+i;
+			String datos[] = new String[7];
+			for (int j = 0; j<7; j++) {
+			datos[j]="Algo"+j;
+			}
 		
 			modelo.addRow(datos);
 
@@ -340,9 +344,110 @@ public class facturacion extends JFrame {
 		tabbedPane.addTab("Peticiones de Compra", null, panel_2, null);
 		panel_2.setLayout(null);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(6, 6, 650, 542);
-		panel_2.add(scrollPane_2);
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(6, 6, 650, 542);
+		panel_2.add(scrollPane_3);
+		
+		table3 = new JTable();
+		scrollPane_3.setViewportView(table3);
+		table3.setFillsViewportHeight(true);
+		table3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table3.setToolTipText("");
+		
+	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = fabrica.createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("SELECT e FROM Usuario e ");
+		List  a=q.getResultList();*/
+
+		table3.setModel(new DefaultTableModel(
+			new Object[][] {,},
+			new String[] {
+				"Nombre Cliente","Paquete" ,"Aprobado","Fecha","Monto","Aprobar","Editar","Borrar"
+			}
+		));
+		
+		
+		table3.getColumnModel().getColumn(0).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(3).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getTableHeader();
+		
+	int numRows3 = table2.getRowCount();
+		int numCols3 = table2.getColumnCount();
+		
+		Action editarPet = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table3 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table3.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action aprobarPet = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table3 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table3.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action eliminarPet = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table2 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table2.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		
+		for (int i = 0; i <15; i++) {
+			
+			DefaultTableModel modelo = (DefaultTableModel)this.table3.getModel();
+			String datos[] = new String[8];
+			for (int j = 0; j<8; j++) {
+			datos[j]="Algo"+j;
+			}
+			modelo.addRow(datos);
+
+			}
+		
+		/*
+		for (int i = 0; i < a.size(); i++) {
+		Usuario usuario1= (Usuario) a.get(i);
+		String b = a.get(i).toString();
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]=String.valueOf(usuario1.getId());
+		datos[1]=usuario1.getcontrasenia();
+		datos[2]=usuario1.getNombre();
+		datos[3]=b.substring(7);
+		modelo.addRow(datos);
+		
+		
+		//modelo.addRow(gay,gay2,gay3);
+		}*/
+		ButtonColumn botonEditarPet = new ButtonColumn(table3, editarCom, 7);
+		botonEditar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonEliminarPet = new ButtonColumn(table3, eliminarCom, 8);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonAprobarPet = new ButtonColumn(table3, aprobarCom, 6);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
 		
 		
 		
