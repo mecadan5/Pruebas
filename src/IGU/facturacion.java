@@ -3,28 +3,30 @@ package IGU;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
+import java.awt.event.KeyEvent;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
+import IGU.ButtonColumn;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
+
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+
 
 import javax.swing.JTabbedPane;
 
@@ -35,9 +37,11 @@ import javax.swing.JScrollPane;
 public class facturacion extends JFrame {
 
 	
-	private static final String PERSISTENCE_UNIT_NAME = null;
+	
 	private JPanel contentPane;
-	private JTable table;
+	private JTable table,table2,table3;
+	
+	
 	
 
 	/**
@@ -125,28 +129,96 @@ public class facturacion extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(6, 68, 650, 467);
 		panel.add(scrollPane);
-		JTable table = new JTable();
+		
+		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
-		Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		EntityManager em = ((EntityManagerFactory) fabrica).createEntityManager();
+	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = fabrica.createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("SELECT e FROM Usuario e ");
-		List  a=q.getResultList();
+		List  a=q.getResultList();*/
+		
+		
+								
+		
+		
 		table.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre de Paquete","Opciones de Gestión"
+				"Nombre de Paquete" ,"Editar","Borrar"
 			}
 		));
+		
+		JButton btnNewButton = new JButton("New button");
+		scrollPane.setColumnHeaderView(btnNewButton);
 		table.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
-		
+		table.getColumnModel().getColumn(2).setPreferredWidth(100);
 		table.getTableHeader();
+		
+	int numRows = table.getRowCount();
+		int numCols = table.getColumnCount();
+		
+		Action editar = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action eliminar = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		
+		for (int i = 0; i <15; i++) {
+			
+			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+			String datos[] = new String[3];
+			datos[0]="Paquete"+i;
+		
+			modelo.addRow(datos);
+
+			}
+		
+		/*
+		for (int i = 0; i < a.size(); i++) {
+		Usuario usuario1= (Usuario) a.get(i);
+		String b = a.get(i).toString();
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]=String.valueOf(usuario1.getId());
+		datos[1]=usuario1.getcontrasenia();
+		datos[2]=usuario1.getNombre();
+		datos[3]=b.substring(7);
+		modelo.addRow(datos);
+		
+		
+		//modelo.addRow(gay,gay2,gay3);
+		}*/
+		ButtonColumn botonEditar = new ButtonColumn(table, editar, 2);
+		botonEditar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 3);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
+		
+		
+		
 		
 		
 				
@@ -159,30 +231,110 @@ public class facturacion extends JFrame {
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(6, 6, 650, 529);
 		panel_1.add(scrollPane_1);
-		JTable table1 = new JTable();
-		scrollPane_1.setViewportView(table1);
-		table1.setFillsViewportHeight(true);
-		table1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table1.setToolTipText("");
 		
-	
-	
-		Query q1 = em.createQuery("SELECT e FROM Usuario e ");
-		List  a1=q1.getResultList();
-		table1.setModel(new DefaultTableModel(
+		table2 = new JTable();
+		scrollPane_1.setViewportView(table2);
+		table2.setFillsViewportHeight(true);
+		table2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table2.setToolTipText("");
+		
+	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = fabrica.createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("SELECT e FROM Usuario e ");
+		List  a=q.getResultList();*/
+		
+		
+								
+		
+		
+		table2.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre Distribuidor","Aprobada","Mes","Monto","Opciones de Gestión"
+				"Nombre Distribuidor" ,"Aprobada","Mes","Monto","Aprobar","Editar","Borrar"
 			}
 		));
-		table1.getColumnModel().getColumn(0).setPreferredWidth(180);
-		table1.getColumnModel().getColumn(1).setPreferredWidth(100);
-		table1.getColumnModel().getColumn(2).setPreferredWidth(100);
-		table1.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table1.getColumnModel().getColumn(4).setPreferredWidth(200);
 		
-		table1.getTableHeader();
+		JButton btnNewButton2 = new JButton("New button");
+		scrollPane_1.setColumnHeaderView(btnNewButton2);
+		table2.getColumnModel().getColumn(0).setPreferredWidth(300);
+		table2.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table2.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table2.getColumnModel().getColumn(3).setPreferredWidth(300);
+		table2.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table2.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table2.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table2.getTableHeader();
+		
+	int numRows2 = table2.getRowCount();
+		int numCols2 = table2.getColumnCount();
+		
+		Action editarCom = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table2 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table2.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action aprobarCom = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table2 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table2.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		Action eliminarCom = new AbstractAction()
+		{	
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JTable table2 = (JTable)e.getSource();
+		        int modelRow = Integer.valueOf( e.getActionCommand() );
+		        ((DefaultTableModel)table2.getModel()).removeRow(modelRow);
+		        JOptionPane.showMessageDialog(null,"Hola"); 
+		   
+		    }
+		};
+		
+		for (int i = 0; i <15; i++) {
+			
+			DefaultTableModel modelo = (DefaultTableModel)this.table2.getModel();
+			String datos[] = new String[3];
+			datos[0]="Paquete"+i;
+		
+			modelo.addRow(datos);
+
+			}
+		
+		/*
+		for (int i = 0; i < a.size(); i++) {
+		Usuario usuario1= (Usuario) a.get(i);
+		String b = a.get(i).toString();
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]=String.valueOf(usuario1.getId());
+		datos[1]=usuario1.getcontrasenia();
+		datos[2]=usuario1.getNombre();
+		datos[3]=b.substring(7);
+		modelo.addRow(datos);
+		
+		
+		//modelo.addRow(gay,gay2,gay3);
+		}*/
+		ButtonColumn botonEditarCom = new ButtonColumn(table2, editarCom, 6);
+		botonEditar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonEliminarCom = new ButtonColumn(table2, eliminarCom, 7);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
+		ButtonColumn botonAprobarCom = new ButtonColumn(table2, aprobarCom, 5);
+		botonEliminar.setMnemonic(KeyEvent.VK_D);
 		
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Peticiones de Compra", null, panel_2, null);
@@ -192,30 +344,6 @@ public class facturacion extends JFrame {
 		scrollPane_2.setBounds(6, 6, 650, 542);
 		panel_2.add(scrollPane_2);
 		
-		JTable table2 = new JTable();
-		scrollPane_2.setViewportView(table2);
-		table2.setFillsViewportHeight(true);
-		table2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table2.setToolTipText("");
-		
-	
-	
-		Query q2 = em.createQuery("SELECT e FROM Usuario e ");
-		List  a2=q2.getResultList();
-		table2.setModel(new DefaultTableModel(
-			new Object[][] {,},
-			new String[] {
-				"Nombre Cliente","Paquete","Aprobado","Fecha","Opciones de Gestión"
-			}
-		));
-		table2.getColumnModel().getColumn(0).setPreferredWidth(180);
-		table2.getColumnModel().getColumn(1).setPreferredWidth(100);
-		table2.getColumnModel().getColumn(2).setPreferredWidth(100);
-		table2.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table2.getColumnModel().getColumn(4).setPreferredWidth(200);
-		
-		table2.getTableHeader();
 		
 		
 		
