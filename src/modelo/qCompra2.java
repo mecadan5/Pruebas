@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,8 +17,13 @@ import javax.persistence.Table;
 public class qCompra2 implements Serializable {
 	@Id
 	@GeneratedValue
-	@Column(name="idpago", unique=true, nullable=false)
-	private int idpago;
+	@Column(name="idcompra", unique=true, nullable=false)
+	private int idcompra;
+	
+	@ManyToOne (cascade=CascadeType.ALL)
+	@JoinColumn(name="pago", unique= true, nullable=true, insertable=true, updatable=true)
+	private qPago2 pago;
+	
 	@Column(name="aprobado")
 	private boolean aprobado;
 	@Column(name="fechaaprobacion")
@@ -29,16 +35,15 @@ public class qCompra2 implements Serializable {
 	@Column(name="fechaEliminacion")
 	private int fechaEliminacion;
 	
-	@OneToOne (cascade=CascadeType.ALL)
+	@ManyToOne (cascade=CascadeType.ALL)
 	@JoinColumn(name="Asesorcomercial", unique= true, nullable=true, insertable=true, updatable=true)
 	private qAsesorComercial2 AsesorComercial;
 	
-	@OneToOne (cascade=CascadeType.ALL)
+	@ManyToOne  (cascade=CascadeType.ALL)
 	 @JoinColumn(name="Cliente", unique= true, nullable=true, insertable=true, updatable=true)
+		private  qCliente2 Cliente;
 	
-	private  qCliente2 Cliente;
-	
-	@OneToOne (cascade=CascadeType.ALL)
+	@ManyToOne  (cascade=CascadeType.ALL)
 	 @JoinColumn(name="revisorcomercial", unique= true, nullable=true, insertable=true, updatable=true)
 	private qRevisorComercial2 RevisorComercial;
 	
@@ -48,18 +53,18 @@ public class qCompra2 implements Serializable {
 	@Column(name="pagado")
 	private boolean pagado;
 	
-	@OneToOne (cascade=CascadeType.ALL)
-	@JoinColumn(name="id_administrador", unique= true, nullable=true, insertable=true, updatable=true)
+	@ManyToOne  (cascade=CascadeType.ALL)
+	@JoinColumn(name="paquetehosting", unique= true, nullable=true, insertable=true, updatable=true)
 	private qPaqueteHosting2 paqueteHosting ;
 	
 	
-	public int getIdpago() {
-		return idpago;
+	public int getIdcompra() {
+		return idcompra;
 	}
 
 
-	public void setIdpago(int idpago) {
-		this.idpago = idpago;
+	public void setIdcompra(int idcompra) {
+		this.idcompra = idcompra;
 	}
 
 
@@ -133,14 +138,7 @@ public class qCompra2 implements Serializable {
 	}
 
 
-	public qRevisorComercial2 getRevisorPaquete() {
-		return RevisorPaquete;
-	}
-
-
-	public void setRevisorPaquete(qRevisorComercial2 revisorPaquete) {
-		RevisorPaquete = revisorPaquete;
-	}
+	
 
 
 	public String getNombredeDominio() {
@@ -170,6 +168,26 @@ public class qCompra2 implements Serializable {
 
 	public void setPaqueteHosting(qPaqueteHosting2 paqueteHosting) {
 		this.paqueteHosting = paqueteHosting;
+	}
+
+
+	public qPago2 getPago() {
+		return pago;
+	}
+
+
+	public void setPago(qPago2 pago) {
+		this.pago = pago;
+	}
+
+
+	public qRevisorComercial2 getRevisorComercial() {
+		return RevisorComercial;
+	}
+
+
+	public void setRevisorComercial(qRevisorComercial2 revisorComercial) {
+		RevisorComercial = revisorComercial;
 	}
 
 

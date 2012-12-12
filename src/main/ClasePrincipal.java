@@ -13,15 +13,10 @@ import IGU.Inicio;
 import IGU.login;
 
 
-import modelo.Administrador;
-import modelo.Cupo;
-import modelo.Esposa;
-import modelo.Poligamo;
-import modelo.Transaccion;
-import modelo.Registrador;
-import modelo.Usuario;
+
 import modelo.qAdministrador;
 import modelo.qCheque2;
+import modelo.qComision2;
 import modelo.qCompra2;
 import modelo.qEfectivo2;
 import modelo.qPaqueteHosting2;
@@ -43,7 +38,10 @@ public class ClasePrincipal {
 		// Leer los registros existentes
 		Query q = em.createQuery("select m from qUsuario2 m");
 					
-		
+			qComision2 xComision2 =new qComision2();
+			xComision2.setMesComision(10);
+			em.persist(xComision2);
+			
 			qCompra2 a=new qCompra2();
 			a.setAprobado(true);
 			a.setNombredeDominio("pepitoperew");
@@ -118,51 +116,18 @@ public class ClasePrincipal {
 			em.persist(admin11);*/
 			//finprueba
 			
-			Poligamo poligamo = new Poligamo();
 			
-	
-			poligamo.setNombre("Asrahir");
-			poligamo.setcontrasenia("000000");
-			poligamo.setFechaNacimiento(12011967);
-			poligamo.getId();
-			Cupo cupo =new Cupo();
-			Long a =(long) 2000;
-			cupo.setCupo_asignado(a);
-			cupo.setSobre_cupo_asignado(a);
-			em.persist(cupo);
-			poligamo.setCupo(cupo);
-			em.persist(poligamo);
-			Registrador registra = new Registrador();
-			registra.setNombre("sssss");
-			registra.setcontrasenia("sss");
-			registra.setFechaNacimiento(12011967);
-			em.persist(registra);
-			Administrador admin =new Administrador();
-			admin.setNombre("aa");
-			admin.setcontrasenia("aa");
-			admin.setFechaNacimiento(12011991);
-			em.persist(admin);
-			for(int i=0;i<20;i++){
-			Esposa esposa = new Esposa();
-			esposa.setNombre("Juana_"+i);
-			esposa.setcontrasenia("de Asnab");
 			//int a =100;
 			//Long h =(long)a;
 			//esposa.setcupo_asignado(h*i);
-			esposa.setMarido(poligamo);
-			poligamo.getEsposas().add(esposa);
-			em.persist(esposa);
-			em.persist(poligamo);
+			
 			
 			}
 		}
 		
 		
-		em.getTransaction().commit();
-
 		
-		em.close();
-	}
+	
 	
 	public void comprar (){
 		EntityManager em = fabrica.createEntityManager();
@@ -170,25 +135,7 @@ public class ClasePrincipal {
 		Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre AND e.contrasenia = :contrasenia");
 		q.setParameter("primerNombre", "Juana_14");
 		q.setParameter("contrasenia", "de Asnab");
-		Esposa usuario = (Esposa) q.getSingleResult();
-		//System.out.println(usuario.getcupo_asignado());
 		
-		Transaccion compra = new Transaccion();
-		compra.setFecha(220112);
-		compra.setMonto(100);
-		em.persist(compra);
-		
-		Transaccion compra2 = new Transaccion();
-		compra2.setFecha(221215);
-		compra2.setMonto(150);
-		em.persist(compra2);
-		
-		usuario.getCompra().add(compra);
-		usuario.getCompra().add(compra2);
-		em.persist(usuario);
-		
-		em.getTransaction().commit();
-		em.close();
 	}
 	
 	public void borrar(){
@@ -197,9 +144,9 @@ public class ClasePrincipal {
 		Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre AND e.contrasenia = :contrasenia");
 		q.setParameter("primerNombre", "Juana_1");
 		q.setParameter("contrasenia", "de Asnab");
-		Usuario usuario1 = (Usuario) q.getSingleResult();
-		System.out.println(usuario1.getcontrasenia());
-		em.remove(usuario1);
+		//Usuario usuario1 = (Usuario) q.getSingleResult();
+		
+		//em.remove(usuario1);
 		em.getTransaction().commit();
 		em.close();
 	}
