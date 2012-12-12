@@ -46,7 +46,7 @@ public class ClasePrincipal {
 			admin11.setContrasenia("admin");
 			admin11.setNombre("admin");
 			em.persist(admin11);
-			//5555555555555555
+			//5555555555555555caramba
 			qAdministrador admin22=new qAdministrador();
 			admin22.setContrasenia("admina");
 			admin22.setNombre("admina");
