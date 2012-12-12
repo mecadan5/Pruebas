@@ -22,6 +22,7 @@ import modelo.Registrador;
 import modelo.Usuario;
 import modelo.qAdministrador;
 import modelo.qCheque2;
+import modelo.qCompra2;
 import modelo.qEfectivo2;
 import modelo.qPaqueteHosting2;
 import modelo.qTarjetaCredito2;
@@ -42,6 +43,12 @@ public class ClasePrincipal {
 		// Leer los registros existentes
 		Query q = em.createQuery("select m from qUsuario2 m");
 					
+		
+			qCompra2 a=new qCompra2();
+			a.setAprobado(true);
+			a.setNombredeDominio("pepitoperew");
+			em.persist(a);
+			 
 			qAdministrador admin11=new qAdministrador();
 			admin11.setContrasenia("admin");
 			admin11.setNombre("admin");
