@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 @Entity
-public class qTarjetaCredito2 extends qPago2{
+public class TarjetaCredito extends Pago{
 	@Column(name="ClasedeTarjeta")
 	String claseDeTarjeta;
 	@Column(name="Fechatarjeta")
@@ -38,7 +38,7 @@ public class qTarjetaCredito2 extends qPago2{
 	public void setNumeroTarjeta(int numeroTarjeta) {
 		this.numeroTarjeta = numeroTarjeta;
 	}
-	public qTarjetaCredito2() {
+	public TarjetaCredito() {
 		// TODO Auto-generated constructor stub
 	}
 
