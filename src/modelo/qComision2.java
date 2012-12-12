@@ -1,7 +1,9 @@
 package modelo;
 
 import javax.persistence.Entity;
-
+import javax.persistence.Table;
+@Entity
+@Table (name="comision")
 public class qComision2 {
 	private qDistribuidor2 distribuidor;///id o objeto distribuidor???
 	private boolean aprobadoComision;
