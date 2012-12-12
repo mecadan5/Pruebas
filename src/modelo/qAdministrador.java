@@ -20,7 +20,9 @@ import javax.persistence.Transient;
 
 public class qAdministrador extends qUsuario2{
 	
+	@Column(name="idadministrador", unique=true , nullable=false)
 	
+	int idadministrador;
 	
 	
 	
