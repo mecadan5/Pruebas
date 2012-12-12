@@ -27,7 +27,7 @@
 	  		<!-- relacionado a la compra -->
 	  		<class>modelo.qComision2</class>
 	  		<class>modelo.qCompra2</class>
-	  	<!--  	<class>modelo.qPaqueteHosting2</class>-->
+	  	  	<class>modelo.qPaqueteHosting2</class>
 	  		<!-- relacionado a la autenticacion -->
 	  		<class>modelo.qPermiso2</class>
 	  		<class>modelo.qRol2</class>

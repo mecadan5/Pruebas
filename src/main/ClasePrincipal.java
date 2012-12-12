@@ -45,17 +45,30 @@ public class ClasePrincipal {
 			qAdministrador admin11=new qAdministrador();
 			admin11.setContrasenia("admin");
 			admin11.setNombre("admin");
-			
 			em.persist(admin11);
+			
+			qAdministrador admin22=new qAdministrador();
+			admin22.setContrasenia("admina");
+			admin22.setNombre("admina");
+			em.persist(admin22);
+			
+			qAdministrador admin33=new qAdministrador();
+			admin33.setContrasenia("adminb");
+			admin33.setNombre("adminb");
+			em.persist(admin33);
+			
 			//em.getTransaction().commit();
-			/*
+			
 			//em.getTransaction().begin();
+			
 			qPaqueteHosting2 pruebaHosting2 =new qPaqueteHosting2();
-			//pruebaHosting2.setAdministrador(admin11);			
+			pruebaHosting2.setAdministrador(admin33);			
 			pruebaHosting2.setPlataforma("linux");
+			
 			em.persist(pruebaHosting2);
+			
 			//em.getTransaction().commit();
-			*/
+			
 			
 			qTarjetaCredito2 tarjetaprueba =new qTarjetaCredito2();
 			tarjetaprueba.setNumeroTarjeta(50);

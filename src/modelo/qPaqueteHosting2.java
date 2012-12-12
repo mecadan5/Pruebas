@@ -2,13 +2,15 @@ package modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name="paqueteHosting")
@@ -24,8 +26,8 @@ public class qPaqueteHosting2 implements Serializable {
 		private int espacioendisco;
 		
 		
-		@ManyToOne(fetch=FetchType.LAZY,optional=false)
-		@JoinColumn(name="idUsuario")
+		@OneToOne (cascade=CascadeType.ALL)
+		  @JoinColumn(name="id_administrador", unique= true, nullable=true, insertable=true, updatable=true)
 		private qAdministrador Administradorpre;
 		@Column(name="numeroBaseDeDatos")
 		private int numeroBaseDeDatos;
