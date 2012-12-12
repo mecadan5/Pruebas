@@ -2,7 +2,6 @@ package IGU;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -23,10 +22,10 @@ import java.awt.Button;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class entrada  {
+public class pruebita extends JFrame {
 
 	private JPanel contentPane;
-	JFrame frame= new JFrame();
+
 	/**
 	 * Launch the application.
 	 */
@@ -34,8 +33,8 @@ public class entrada  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					entrada frame = new entrada();
-					
+					pruebita frame = new pruebita();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -46,13 +45,13 @@ public class entrada  {
 	/**
 	 * Create the frame.
 	 */
-	public entrada() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 550, 400);
+	public pruebita() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 550, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		frame.setContentPane(contentPane);
+		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("");
@@ -60,7 +59,7 @@ public class entrada  {
 		label.setBounds(65, 6, 396, 104);
 		contentPane.add(label);
 		
-		JLabel lblInicioDeSesion = new JLabel("Bienvenido");
+		JLabel lblInicioDeSesion = new JLabel("Pruebita");
 		lblInicioDeSesion.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
 		lblInicioDeSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInicioDeSesion.setBounds(124, 113, 266, 45);
@@ -81,14 +80,11 @@ public class entrada  {
 		contentPane.add(lblRolDeUsuario);
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
-		frame.setVisible(true);
 		btnFacturacin.addMouseListener(new MouseAdapter() {
 			@Override
-			
 			public void mouseClicked(MouseEvent arg0) {
 				facturacion facti = new facturacion();
 				facti.setVisible(true);
-				
 			}
 		});
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
@@ -101,10 +97,8 @@ public class entrada  {
 		btnGestionDeUsuarios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				pruebita prue = new pruebita();
-				prue.setVisible(true);
-				frame.setVisible(false);
-				
+				usuarios user = new usuarios();
+				user.setVisible(true);
 			}
 		});
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
