@@ -5,8 +5,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import IGU.ButtonColumn;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.Action;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -25,6 +31,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import modelo.Usuario;
 
 
 
@@ -136,11 +144,11 @@ public class facturacion {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
-	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+	EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
 		EntityManager em = fabrica.createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("SELECT e FROM Usuario e ");
-		List  a=q.getResultList();*/
+		List  a=q.getResultList();
 		
 		
 								
@@ -153,8 +161,8 @@ public class facturacion {
 			}
 		));
 		
-		JButton btnNewButton = new JButton("New button");
-		scrollPane.setColumnHeaderView(btnNewButton);
+		
+		
 		table.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -201,6 +209,7 @@ public class facturacion {
 		
 		/*
 		for (int i = 0; i < a.size(); i++) {
+			
 		Usuario usuario1= (Usuario) a.get(i);
 		String b = a.get(i).toString();
 		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
@@ -214,9 +223,16 @@ public class facturacion {
 		
 		//modelo.addRow(gay,gay2,gay3);
 		}*/
-		ButtonColumn botonEditar = new ButtonColumn(table, editar, 2);
+		
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]="1";
+		datos[1]="2";
+		datos[2]="3";
+		modelo.addRow(datos);
+		ButtonColumn botonEditar = new ButtonColumn(table, editar,1);
 		botonEditar.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 3);
+		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 2);
 		botonEliminar.setMnemonic(KeyEvent.VK_D);
 		
 		
