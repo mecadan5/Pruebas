@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 
 package main;
 
@@ -230,23 +228,21 @@ import modelo.Distribuidor;
 import modelo.Efectivo;
 import modelo.PaqueteHosting;
 import modelo.TarjetaCredito;
+import persistencia.MapeadorUsuario;
 
 public class ClasePrincipal {
 	
-	private static final String PERSISTENCE_UNIT_NAME = "gente";
-	private EntityManagerFactory fabrica;
+	
 	
 	public void crearNuevosregistros() throws Exception{
-		fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		
-		EntityManager em = fabrica.createEntityManager();
 
 		// Empezar una transaccion local para poder crear persistencias
-		em.getTransaction().begin();
+		
 		
 		// Leer los registros existentes
-		Query q = em.createQuery("select m from Usuario m");
-					
+		//Query q = em.createQuery("select m from Usuario m");
+			MapeadorUsuario	map=new MapeadorUsuario();	
 			Cliente  mc =new Cliente();
 			mc.setEmail("funcionando");
 			
@@ -255,7 +251,7 @@ public class ClasePrincipal {
 			Distribuidor donal =new Distribuidor();
 			mc.setDistribuidor(donal);
 			mc.getDistribuidor();
-			em.persist(mc);
+			map
 			
 			donal.setEmail("email 2");
 			
