@@ -56,6 +56,7 @@ public class consultaComision extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblInicioDeSesion = new JLabel("Comisi\u00F3n # 12");
+		lblInicioDeSesion.setIcon(new ImageIcon(consultaComision.class.getResource("/assets/1355329842_Prize.png")));
 		lblInicioDeSesion.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
 		lblInicioDeSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInicioDeSesion.setBounds(97, 21, 266, 45);

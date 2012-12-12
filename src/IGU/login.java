@@ -22,6 +22,14 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 
+<<<<<<< HEAD
+
+import modelo.qUsuario2;
+
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/mecadan5/Pruebas.git
 
 
 import java.awt.SystemColor;d
@@ -102,7 +110,7 @@ public class login extends JFrame {
 		contentPane.add(txtContrasea);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/logochibcha.png"));
+		label.setIcon(new ImageIcon(this.getClass().getResource("../assets/logochibcha.png")));
 		label.setBounds(28, 6, 396, 104);
 		contentPane.add(label);
 		
@@ -130,7 +138,7 @@ public class login extends JFrame {
 				Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre AND e.contrasenia = :contrasenia");
 				q.setParameter("primerNombre",getUsuario() );//campo de arriba "Juana_0"  getUsuario()   "sssss"
 				q.setParameter("contrasenia", getContasenia() );//campo de abajo "de Asnab"  getContasenia()      "sss"
-				Usuario usuario1 = (Usuario) q.getSingleResult();
+				qUsuario2 usuario1 = (qUsuario2) q.getSingleResult();
 				List a =q.getResultList();
 				a.size();
 				String b = a.get(0).toString();
@@ -154,7 +162,7 @@ public class login extends JFrame {
 					frame.setVisible(true);
 					contentPane.setVisible(false);
 								}
-				System.out.println(usuario1.getcontrasenia());
+				System.out.println(usuario1.getContrasenia());
 				em.getTransaction().commit();
 				em.close();
 				

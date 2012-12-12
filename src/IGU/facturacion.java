@@ -73,7 +73,7 @@ public class facturacion extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/logochibcha.png"));
+		label.setIcon(new ImageIcon(this.getClass().getResource("../assets/logochibcha.png")));
 		label.setBounds(28, 6, 396, 104);
 		contentPane.add(label);
 		
@@ -98,7 +98,7 @@ public class facturacion extends JFrame {
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		btnFacturacin.setEnabled(false);
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-		btnFacturacin.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/chibchaweb/assets/bill.png"));
+		btnFacturacin.setIcon(new ImageIcon(this.getClass().getResource("../assets/bill.png")));
 		btnFacturacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -108,7 +108,7 @@ public class facturacion extends JFrame {
 		
 		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		btnGestionDeUsuarios.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/chibchaweb/assets/user.png"));
+		btnGestionDeUsuarios.setIcon(new ImageIcon(this.getClass().getResource("../assets/user.png")));
 		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
 		contentPane.add(btnGestionDeUsuarios);
 		
@@ -123,7 +123,7 @@ public class facturacion extends JFrame {
 		
 		JButton btnAgregarPaquete = new JButton("Agregar Paquete");
 		btnAgregarPaquete.setBounds(469, 6, 187, 45);
-		btnAgregarPaquete.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/plus.png"));
+		btnAgregarPaquete.setIcon(new ImageIcon(this.getClass().getResource("../assets/plus.png")));
 		panel.add(btnAgregarPaquete);
 		
 		JScrollPane scrollPane = new JScrollPane();

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0"	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
@@ -42,3 +43,49 @@
 	</persistence-unit>
 </persistence>
 
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="gente" transaction-type="RESOURCE_LOCAL">
+		
+	  	<!--inicio del modelo 2013  -->
+	  	
+	  		<!-- usuarios -->
+	  		<class>modelo.qUsuario2</class>
+	  			<class>modelo.qAdministrador</class>
+	  			<class>modelo.qAsesorComercial2</class>
+	  			<class>modelo.qCliente2</class>
+	  			<class>modelo.qDistribuidor2</class>
+	  			<class>modelo.qRevisorComercial2</class>
+	  		<!-- Pago -->
+	  		<class>modelo.qPago2</class>
+	  			<class>modelo.qCheque2</class>
+	  			<class>modelo.qEfectivo2</class>
+	  			<class>modelo.qTarjetaCredito2</class>
+	  		<!-- relacionado a la compra -->
+	  		<class>modelo.qComision2</class>
+	  		<class>modelo.qCompra2</class>
+	  	  	<class>modelo.qPaqueteHosting2</class>
+	  		<!-- relacionado a la autenticacion -->
+	  		<class>modelo.qPermiso2</class>
+	  		<class>modelo.qRol2</class>
+	  		<class>modelo.qValidacion2</class>
+	  		
+			<!-- relacionado a la conexion con el manejador de base de datos -->
+		<properties>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/" />
+			<property name="javax.persistence.jdbc.user" value="postgres" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+
+			<!-- relacionado a borrar las tablas y la creacion de las mismas  -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			 <property name="eclipselink.ddl-generation.output-mode"	value="database" />
+			<property name="eclipselink.jdbc.batch-writing" value="Buffered" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>
+
+>>>>>>> branch 'master' of https://github.com/mecadan5/Pruebas.git
