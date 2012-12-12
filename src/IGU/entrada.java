@@ -87,7 +87,7 @@ public class entrada  {
 			
 			public void mouseClicked(MouseEvent arg0) {
 				facturacion facti = new facturacion();
-				facti.setVisible(true);
+				//facti.setVisible(true);
 				
 			}
 		});

@@ -31,12 +31,13 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class facturacion extends JFrame {
+public class facturacion {
 
 	
 	
 	private JPanel contentPane;
 	private JTable table,table2,table3;
+	JFrame frame= new JFrame();
 	
 	
 	
@@ -49,7 +50,7 @@ public class facturacion extends JFrame {
 			public void run() {
 				try {
 					facturacion frame = new facturacion();
-					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -61,13 +62,14 @@ public class facturacion extends JFrame {
 	 * Create the frame.
 	 */
 	public facturacion() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 960, 7500);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 960, 7500);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
+		frame.setVisible(true);
 		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(this.getClass().getResource("../assets/logochibcha.png")));

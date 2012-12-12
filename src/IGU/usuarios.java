@@ -38,13 +38,13 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.util.List;
 
-public class usuarios extends JFrame {
+public class usuarios{
 
 	
 	private static final String PERSISTENCE_UNIT_NAME = "gente";
 	private JPanel contentPane;
 	private JTextField txtIntroduzcaNombreUsuario;
-	private JTable table;
+	private JTable table;JFrame frame= new JFrame();
 
 	/**
 	 * Launch the application.
@@ -54,7 +54,7 @@ public class usuarios extends JFrame {
 			public void run() {
 				try {
 					usuarios frame = new usuarios();
-					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,13 +66,13 @@ public class usuarios extends JFrame {
 	 * Create the frame.
 	 */
 	public usuarios() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 960, 750);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 960, 750);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		frame.setContentPane(contentPane);
+		contentPane.setLayout(null);frame.setVisible(true);
 		
 		JLabel label = new JLabel("");
 		

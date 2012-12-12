@@ -84,7 +84,7 @@ public class pruebita extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				facturacion facti = new facturacion();
-				facti.setVisible(true);
+			
 			}
 		});
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
