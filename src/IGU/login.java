@@ -22,13 +22,17 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 
+<<<<<<< HEAD
 
 import modelo.qUsuario2;
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/mecadan5/Pruebas.git
 
-import java.awt.SystemColor;
+
+import java.awt.SystemColor;d
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
