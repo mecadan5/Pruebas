@@ -1,38 +1,35 @@
 package IGU;
 
-
 import java.awt.EventQueue;
 import java.awt.Font;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-
-import javax.swing.AbstractAction;
+import IGU.ButtonColumn;
 import javax.swing.Action;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-
-import IGU.ButtonColumn;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
 import javax.swing.table.DefaultTableModel;
 
 
-import javax.swing.JTabbedPane;
 
-import javax.swing.JTable;
 
-import javax.swing.JScrollPane;
+
 
 public class facturacion extends JFrame {
 
@@ -133,7 +130,7 @@ public class facturacion extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
-		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table.setBorder( new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
@@ -187,7 +184,7 @@ public class facturacion extends JFrame {
 		    }
 		};
 		
-		for (int i = 0; i <15; i++) {
+		/*for (int i = 0; i <15; i++) {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
 			String datos[] = new String[3];
@@ -198,7 +195,7 @@ public class facturacion extends JFrame {
 		
 			modelo.addRow(datos);
 
-			}
+			}*/
 		
 		/*
 		for (int i = 0; i < a.size(); i++) {
@@ -272,7 +269,7 @@ public class facturacion extends JFrame {
 	int numRows2 = table2.getRowCount();
 		int numCols2 = table2.getColumnCount();
 		
-		Action editarCom = new AbstractAction()
+		javax.swing.Action editarCom = new AbstractAction()
 		{	
 		    public void actionPerformed(ActionEvent e)
 		    {
@@ -294,7 +291,7 @@ public class facturacion extends JFrame {
 		   
 		    }
 		};
-		Action eliminarCom = new AbstractAction()
+	Action eliminarCom = new AbstractAction()
 		{	
 		    public void actionPerformed(ActionEvent e)
 		    {
@@ -306,7 +303,7 @@ public class facturacion extends JFrame {
 		    }
 		};
 		
-		for (int i = 0; i <15; i++) {
+		/*for (int i = 0; i <15; i++) {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table2.getModel();
 			String datos[] = new String[7];
@@ -316,7 +313,7 @@ public class facturacion extends JFrame {
 		
 			modelo.addRow(datos);
 
-			}
+			}*/
 		
 		/*
 		for (int i = 0; i < a.size(); i++) {
@@ -416,7 +413,7 @@ public class facturacion extends JFrame {
 		    }
 		};
 		
-		for (int i = 0; i <15; i++) {
+		/*for (int i = 0; i <15; i++) {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table3.getModel();
 			String datos[] = new String[8];
@@ -425,7 +422,7 @@ public class facturacion extends JFrame {
 			}
 			modelo.addRow(datos);
 
-			}
+			}*/
 		
 		/*
 		for (int i = 0; i < a.size(); i++) {

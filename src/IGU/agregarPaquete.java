@@ -75,17 +75,14 @@ public class agregarPaquete extends JFrame {
 		txtContrasea.setBounds(62, 242, 157, 45);
 		contentPane.add(txtContrasea);
 		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("/Volumes/SHARED HD/Ingenieria de Software 1/ChibchaWeb/assets/package.png"));
-		label.setBounds(126, 6, 51, 104);
-		contentPane.add(label);
 		
-		JLabel lblInicioDeSesion = new JLabel("Agregar Paquete");
-		lblInicioDeSesion.setIcon(new ImageIcon(agregarPaquete.class.getResource("/assets/package.png")));
-		lblInicioDeSesion.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
-		lblInicioDeSesion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblInicioDeSesion.setBounds(155, 36, 317, 45);
-		contentPane.add(lblInicioDeSesion);
+		
+		JLabel lblTitulito = new JLabel("Agregar Paquete");
+		lblTitulito.setIcon(new ImageIcon(agregarPaquete.class.getResource("/assets/package.png")));
+		lblTitulito.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
+		lblTitulito.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulito.setBounds(155, 36, 317, 45);
+		contentPane.add(lblTitulito);
 		
 		JLabel lblUsuario = new JLabel("Por favor ingrese los datos solicitados");
 		lblUsuario.setBounds(219, 92, 190, 16);

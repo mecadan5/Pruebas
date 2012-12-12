@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package main;
 
 import java.io.BufferedReader;
@@ -396,4 +396,4 @@ public class ClasePrincipal {
 	}
 	
 }
->>>>>>> branch 'master' of https://github.com/mecadan5/Pruebas.git
+
