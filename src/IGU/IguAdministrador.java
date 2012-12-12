@@ -43,7 +43,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+//import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import javax.swing.border.BevelBorder;
 import javax.swing.JScrollBar;

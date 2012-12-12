@@ -1,5 +1,8 @@
 package modelo;
 
+import javax.persistence.Entity;
+
+@Entity
 public class qDistribuidor2 extends qUsuario2{
 	private qCliente2 listaDeClientes[];
 	private int tipoDeCuenta;

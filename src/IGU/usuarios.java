@@ -41,7 +41,7 @@ import java.util.List;
 public class usuarios extends JFrame {
 
 	
-	private static final String PERSISTENCE_UNIT_NAME = null;
+	private static final String PERSISTENCE_UNIT_NAME = "gente";
 	private JPanel contentPane;
 	private JTextField txtIntroduzcaNombreUsuario;
 	private JTable table;

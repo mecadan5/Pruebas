@@ -1,6 +1,10 @@
 package modelo;
 
-public class qCompra2 {
+import javax.persistence.Entity;
+
+
+public class qCompra2  {
+	
 	private boolean aprobado;
 	private int fechaAprobacion;
 	private int fechaCancelacion;

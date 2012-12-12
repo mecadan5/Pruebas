@@ -20,12 +20,61 @@ import modelo.Poligamo;
 import modelo.Transaccion;
 import modelo.Registrador;
 import modelo.Usuario;
+import modelo.qAdministrador;
+import modelo.qCheque2;
+import modelo.qEfectivo2;
+import modelo.qPaqueteHosting2;
+import modelo.qTarjetaCredito2;
 
 public class ClasePrincipal {
 	
 	private static final String PERSISTENCE_UNIT_NAME = "gente";
 	private EntityManagerFactory fabrica;
 	
+	public void crearNuevosregistros() throws Exception{
+		fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		
+		EntityManager em = fabrica.createEntityManager();
+
+		// Empezar una transaccion local para poder crear persistencias
+		em.getTransaction().begin();
+		
+		// Leer los registros existentes
+		Query q = em.createQuery("select m from qUsuario2 m");
+					
+			qAdministrador admin11=new qAdministrador();
+			admin11.setContrasenia("admin");
+			admin11.setNombre("admin");
+			
+			em.persist(admin11);
+			//em.getTransaction().commit();
+			/*
+			//em.getTransaction().begin();
+			qPaqueteHosting2 pruebaHosting2 =new qPaqueteHosting2();
+			//pruebaHosting2.setAdministrador(admin11);			
+			pruebaHosting2.setPlataforma("linux");
+			em.persist(pruebaHosting2);
+			//em.getTransaction().commit();
+			*/
+			
+			qTarjetaCredito2 tarjetaprueba =new qTarjetaCredito2();
+			tarjetaprueba.setNumeroTarjeta(50);
+			em.persist(tarjetaprueba);
+			qTarjetaCredito2 tarjetaprueba2 =new qTarjetaCredito2();
+			tarjetaprueba2.setNumeroTarjeta(506666);
+			em.persist(tarjetaprueba2);
+			qCheque2 chequedeprueba= new qCheque2();
+			chequedeprueba.setLugar("bogota");
+			qCheque2 chequedeprueba2= new qCheque2();
+			chequedeprueba.setLugar("pereira");
+			em.persist(chequedeprueba2);
+			em.persist(chequedeprueba);
+		
+		em.getTransaction().commit();
+
+		
+		em.close();
+	}
 	public void configurar() throws Exception{
 		fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = fabrica.createEntityManager();
@@ -41,6 +90,14 @@ public class ClasePrincipal {
 		
 		
 		if (createNewEntries) {
+			
+			/*//prueba
+			qAdministrador admin11=new qAdministrador();
+			admin11.setContrasenia("admin");
+			admin11.setNombre("admin");
+			em.persist(admin11);*/
+			//finprueba
+			
 			Poligamo poligamo = new Poligamo();
 			
 	
@@ -146,6 +203,7 @@ public class ClasePrincipal {
         System.out.println("1-Crear Registros");
 		System.out.println("2-Comprar ");
 		System.out.println("3-Borrar ");
+		System.out.println("4-crearnuevos");
 		opcion = Integer.parseInt(br.readLine());
 		
 		switch(opcion){
@@ -161,8 +219,13 @@ public class ClasePrincipal {
 		case 3:
 			p.borrar();
 			break;
+		case 4:
+			p.crearNuevosregistros();
+		
 		}
-		}while(opcion!=4);
+		
+		}while(opcion!=5);
 
 	}
+	
 }

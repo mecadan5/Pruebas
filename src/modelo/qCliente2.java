@@ -1,7 +1,13 @@
 package modelo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+
+@Entity
 public class qCliente2 extends qUsuario2{
+	@Column(name="direcion")
 	private String direcion;
+	
 	private qDistribuidor2 distribuidor;
 	
 	public qCliente2() {

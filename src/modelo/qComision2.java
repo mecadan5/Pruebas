@@ -1,5 +1,7 @@
 package modelo;
 
+import javax.persistence.Entity;
+
 public class qComision2 {
 	private qDistribuidor2 distribuidor;///id o objeto distribuidor???
 	private boolean aprobadoComision;
