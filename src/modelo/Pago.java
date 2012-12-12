@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name="Pagos")
-public class qPago2 implements Serializable{
+public class Pago implements Serializable{
 	
 	private int idPago;
 	@Id
@@ -38,7 +38,7 @@ public class qPago2 implements Serializable{
 	
 	
 	
-	public qPago2() {
+	public Pago() {
 		// TODO Auto-generated constructor stub
 	}
 

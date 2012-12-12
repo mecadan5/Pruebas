@@ -8,19 +8,23 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import com.sun.jndi.url.dns.dnsURLContext;
+
 
 import IGU.Inicio;
 import IGU.login;
 
 
 
-import modelo.qAdministrador;
-import modelo.qCheque2;
-import modelo.qComision2;
-import modelo.qCompra2;
-import modelo.qEfectivo2;
-import modelo.qPaqueteHosting2;
-import modelo.qTarjetaCredito2;
+import modelo.Administrador;
+import modelo.Cheque;
+import modelo.Cliente;
+import modelo.Comision;
+import modelo.Compra;
+import modelo.Distribuidor;
+import modelo.Efectivo;
+import modelo.PaqueteHosting;
+import modelo.TarjetaCredito;
 
 public class ClasePrincipal {
 	
@@ -36,54 +40,70 @@ public class ClasePrincipal {
 		em.getTransaction().begin();
 		
 		// Leer los registros existentes
-		Query q = em.createQuery("select m from qUsuario2 m");
+		Query q = em.createQuery("select m from Usuario m");
 					
-			qComision2 xComision2 =new qComision2();
+			Cliente  mc =new Cliente();
+			mc.setEmail("funcionando");
+			
+			
+			
+			Distribuidor donal =new Distribuidor();
+			mc.setDistribuidor(donal);
+			mc.getDistribuidor();
+			em.persist(mc);
+			
+			donal.setEmail("email 2");
+			
+			em.persist(donal);
+			Distribuidor lo = mc.getDistribuidor();
+			Long sal = lo.getId();
+			System.out.println(sal);
+			
+			
+			Comision xComision2 =new Comision();
 			xComision2.setMesComision(10);
 			em.persist(xComision2);
 			
-			qCompra2 a=new qCompra2();
+			Compra a=new Compra();
 			a.setAprobado(true);
 			a.setNombredeDominio("pepitoperew");
 			em.persist(a);
 			 
-			qAdministrador admin11=new qAdministrador();
+			Administrador admin11=new Administrador();
 			admin11.setContrasenia("admin");
 			admin11.setNombre("admin");
 			em.persist(admin11);
 			//5555555555555555caramba
-			qAdministrador admin22=new qAdministrador();
+			Administrador admin22=new Administrador();
 			admin22.setContrasenia("admina");
 			admin22.setNombre("admina");
 			em.persist(admin22);
 			
-			qAdministrador admin33=new qAdministrador();
+			Administrador admin33=new Administrador();
 			admin33.setContrasenia("adminb");
 			admin33.setNombre("adminb");
 			em.persist(admin33);
 			
-			//em.getTransaction().commit();
 			
-			//em.getTransaction().begin();
 			
-			qPaqueteHosting2 pruebaHosting2 =new qPaqueteHosting2();
+			PaqueteHosting pruebaHosting2 =new PaqueteHosting();
 			pruebaHosting2.setAdministrador(admin33);			
 			pruebaHosting2.setPlataforma("linux");
 			
 			em.persist(pruebaHosting2);
 			
-			//em.getTransaction().commit();
 			
 			
-			qTarjetaCredito2 tarjetaprueba =new qTarjetaCredito2();
+			
+			TarjetaCredito tarjetaprueba =new TarjetaCredito();
 			tarjetaprueba.setNumeroTarjeta(50);
 			em.persist(tarjetaprueba);
-			qTarjetaCredito2 tarjetaprueba2 =new qTarjetaCredito2();
+			TarjetaCredito tarjetaprueba2 =new TarjetaCredito();
 			tarjetaprueba2.setNumeroTarjeta(506666);
 			em.persist(tarjetaprueba2);
-			qCheque2 chequedeprueba= new qCheque2();
+			Cheque chequedeprueba= new Cheque();
 			chequedeprueba.setLugar("bogota");
-			qCheque2 chequedeprueba2= new qCheque2();
+			Cheque chequedeprueba2= new Cheque();
 			chequedeprueba.setLugar("pereira");
 			em.persist(chequedeprueba2);
 			em.persist(chequedeprueba);
@@ -150,7 +170,7 @@ public class ClasePrincipal {
 		em.getTransaction().commit();
 		em.close();
 	}
-
+	
 	/**
 	 * @param args
 	 */
@@ -189,6 +209,7 @@ public class ClasePrincipal {
 		case 4:
 			p.crearNuevosregistros();
 		
+			
 		}
 		
 		}while(opcion!=5);

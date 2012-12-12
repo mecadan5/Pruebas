@@ -24,7 +24,7 @@ import javax.swing.JButton;
 
 
 
-import modelo.qUsuario2;
+import modelo.Usuario;
 
 
 
@@ -136,7 +136,7 @@ public class login extends JFrame {
 				Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre AND e.contrasenia = :contrasenia");
 				q.setParameter("primerNombre",getUsuario() );//campo de arriba "Juana_0"  getUsuario()   "sssss"
 				q.setParameter("contrasenia", getContasenia() );//campo de abajo "de Asnab"  getContasenia()      "sss"
-				qUsuario2 usuario1 = (qUsuario2) q.getSingleResult();
+				Usuario usuario1 = (Usuario) q.getSingleResult();
 				List a =q.getResultList();
 				a.size();
 				String b = a.get(0).toString();

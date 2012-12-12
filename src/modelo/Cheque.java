@@ -3,7 +3,7 @@ package modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 @Entity
-public class qCheque2 extends qPago2 {
+public class Cheque extends Pago {
 	@Column(name="fechacheque")
 	int fecha;
 	@Column(name="lugar")
@@ -55,7 +55,7 @@ public class qCheque2 extends qPago2 {
 		this.numeroCuenta = numeroCuenta;
 	}
 
-	public qCheque2() {
+	public Cheque() {
 		// TODO Auto-generated constructor stub
 	}
 

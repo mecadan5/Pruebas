@@ -3,9 +3,9 @@ package modelo;
 import javax.persistence.Entity;
 
 @Entity
-public class qRevisorComercial2 extends qUsuario2 {
+public class RevisorComercial extends Usuario {
 
-	public qRevisorComercial2() {
+	public RevisorComercial() {
 		// TODO Auto-generated constructor stub
 	}
 

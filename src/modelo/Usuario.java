@@ -19,7 +19,7 @@ import org.eclipse.persistence.jaxb.javamodel.JavaAnnotation;
 @Entity
 @Table(name="tabla_usuarios2")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class qUsuario2 implements Serializable {
+public class Usuario implements Serializable {
 	
 	
 	
@@ -67,7 +67,7 @@ public class qUsuario2 implements Serializable {
 	
 	//@OneToOne(fetch=FetchType.EAGER,cascade={CascadeType.PERSIST,CascadeType.REMOVE},orphanRemoval=true,optional=false)
 	
-	public qUsuario2() {
+	public Usuario() {
 		// TODO Auto-generated constructor stub
 		
 	}

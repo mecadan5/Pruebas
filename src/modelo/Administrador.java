@@ -18,7 +18,7 @@ import javax.persistence.Transient;
 
 @Entity
 
-public class qAdministrador extends qUsuario2{
+public class Administrador extends Usuario{
 	
 	
 	
@@ -47,7 +47,7 @@ public class qAdministrador extends qUsuario2{
 
 
 
-	public qAdministrador() {
+	public Administrador() {
 		// TODO Auto-generated constructor stub
 	}
 

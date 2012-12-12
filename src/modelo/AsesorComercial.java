@@ -7,18 +7,18 @@ import javax.persistence.ManyToMany;
 import javax.persistence.GeneratedValue;
 
 @Entity
-public class qAsesorComercial2 extends qUsuario2 {
+public class AsesorComercial extends Usuario {
 
 	
-	private List<qCliente2> clientesAtendidos;
+	private List<Cliente> clientesAtendidos;
 	
 	
-	private List<qCompra2> comprasRealizadas;
+	private List<Compra> comprasRealizadas;
 	
 	
 	
 	
-	public qAsesorComercial2() {
+	public AsesorComercial() {
 		// TODO Auto-generated constructor stub
 		
 	}
