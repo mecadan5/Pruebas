@@ -1,50 +1,55 @@
-package IGU;
 
+package IGU;
 
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.List;
+
+import IGU.ButtonColumn;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-import javax.swing.JTabbedPane;
+import modelo.Usuario;
 
-import javax.swing.JTable;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import java.awt.Color;
-import java.util.List;
 
-public class usuarios{
+
+
+
+public class panelCliente {
 
 	
-	private static final String PERSISTENCE_UNIT_NAME = "gente";
+	
 	private JPanel contentPane;
-	private JTextField txtIntroduzcaNombreUsuario;
-	private JTable table;JFrame frame= new JFrame();
+	private JTable table,table3;
+	JFrame frame= new JFrame();
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -53,7 +58,7 @@ public class usuarios{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					usuarios frame = new usuarios();
+					panelCliente frame = new panelCliente();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,20 +70,19 @@ public class usuarios{
 	/**
 	 * Create the frame.
 	 */
-	public usuarios() {
+	public panelCliente() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 960, 750);
+		frame.setBounds(100, 100, 960, 7500);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(contentPane);
-		contentPane.setLayout(null);frame.setVisible(true);
+		contentPane.setLayout(null);
+		frame.setVisible(true);
 		
 		JLabel label = new JLabel("");
-		
 		label.setIcon(new ImageIcon(this.getClass().getResource("../assets/logochibcha.png")));
-		
-		label.setBounds(24, 6, 396, 104);
+		label.setBounds(28, 6, 396, 104);
 		contentPane.add(label);
 		
 		JLabel lblInicioDeSesion = new JLabel("Zona de Administraci\u00F3n para ");
@@ -100,73 +104,54 @@ public class usuarios{
 		contentPane.add(lblRolDeUsuario);
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
+		btnFacturacin.setEnabled(false);
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-
 		btnFacturacin.setIcon(new ImageIcon(this.getClass().getResource("../assets/bill.png")));
-		
 		btnFacturacin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				facturacion fact = new facturacion();
-				fact.setVisible(true);
-				frame.setVisible(false);
 			}
 		});
 		btnFacturacin.setBounds(6, 141, 221, 84);
 		contentPane.add(btnFacturacin);
 		
-		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
-		btnGestionDeUsuarios.setEnabled(false);
-		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
-		btnGestionDeUsuarios.setIcon(new ImageIcon(this.getClass().getResource("../assets/user.png")));
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
-		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
-		contentPane.add(btnGestionDeUsuarios);
+		tabbedPane.setBounds(246, 141, 683, 600);
+		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(239, 141, 690, 561);
-		contentPane.add(panel);
+		tabbedPane.addTab("Paquetes", null, panel, null);
 		panel.setLayout(null);
 		
-		JLabel lblBusqueda = new JLabel("Busqueda");
-		lblBusqueda.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblBusqueda.setIcon(new ImageIcon(this.getClass().getResource("../assets/search.png")));
-		
-		lblBusqueda.setBounds(25, 26, 151, 32);
-		panel.add(lblBusqueda);
-		
-		txtIntroduzcaNombreUsuario = new JTextField();
-		txtIntroduzcaNombreUsuario.setForeground(Color.GRAY);
-		txtIntroduzcaNombreUsuario.setText("Introduzca Nombre Usuario");
-		txtIntroduzcaNombreUsuario.setBounds(156, 23, 198, 40);
-		panel.add(txtIntroduzcaNombreUsuario);
-		txtIntroduzcaNombreUsuario.setColumns(10);
-		
-		JButton button = new JButton("Agregar Usuario");
-		button.addActionListener(new ActionListener() {
+		JButton btnAgregarPaquete = new JButton("Comprar Paquete");
+		btnAgregarPaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				agregarUsuario usu=new agregarUsuario();
-				usu.setVisible(true);
+				compraPaquete compra = new compraPaquete();
+				compra.setVisible(true);
+				
 			}
 		});
-		button.setIcon(new ImageIcon(this.getClass().getResource("../assets/plus.png")));
-		button.setBounds(497, 18, 187, 45);
-		panel.add(button);
+		btnAgregarPaquete.setBounds(469, 6, 187, 45);
+		btnAgregarPaquete.setIcon(new ImageIcon(this.getClass().getResource("../assets/plus.png")));
+		panel.add(btnAgregarPaquete);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(6, 76, 678, 400);
+		scrollPane.setBounds(6, 68, 650, 467);
 		panel.add(scrollPane);
-		JTable table = new JTable();
+		
+		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setFillsViewportHeight(true);
-		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table.setBorder( new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
-		Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		EntityManager em = ((EntityManagerFactory) fabrica).createEntityManager();
+	EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
+		EntityManager em = fabrica.createEntityManager();
 		em.getTransaction().begin();
 		Query q = em.createQuery("SELECT e FROM Usuario e ");
 		List  a=q.getResultList();
+		
 		
 								
 		
@@ -174,44 +159,23 @@ public class usuarios{
 		table.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre", "E-Mail" ,"Tipo De Usuario","Editar","Borrar"
+				"Nombre de Paquete" ,"Fecha Vencimiento","Estado"
 			}
 		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(180);
+		
+		
+		
+		table.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table.getColumnModel().getColumn(2).setPreferredWidth(100);
-		table.getColumnModel().getColumn(3).setPreferredWidth(100);
-		table.getColumnModel().getColumn(4).setPreferredWidth(100);
-
 		table.getTableHeader();
 		
-		int numRows = table.getRowCount();
+	int numRows = table.getRowCount();
 		int numCols = table.getColumnCount();
 		
-		Action editar = new AbstractAction()
-		{	
-		    public void actionPerformed(ActionEvent e)
-		    {
-		        JTable table = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-		        JOptionPane.showMessageDialog(null,"Hola"); 
-		   
-		    }
-		};
-		Action eliminar = new AbstractAction()
-		{	
-		    public void actionPerformed(ActionEvent e)
-		    {
-		        JTable table = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table.getModel()).removeRow(modelRow);
-		        JOptionPane.showMessageDialog(null,"Hola"); 
-		   
-		    }
-		};
+	
 		
-		for (int i = 0; i <15; i++) {
+		/*for (int i = 0; i <15; i++) {
 			
 			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
 			String datos[] = new String[3];
@@ -222,7 +186,49 @@ public class usuarios{
 		
 			modelo.addRow(datos);
 
+			}*/
+		
+		/*
+		for (int i = 0; i < a.size(); i++) {
+			
+		Usuario usuario1= (Usuario) a.get(i);
+		String b = a.get(i).toString();
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[4];
+		datos[0]=String.valueOf(usuario1.getId());
+		datos[1]=usuario1.getcontrasenia();
+		datos[2]=usuario1.getNombre();
+		datos[3]=b.substring(7);
+		modelo.addRow(datos);
+		
+		
+		//modelo.addRow(gay,gay2,gay3);
+		}*/
+		
+		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+		String datos[] = new String[3];
+		datos[0]="1";
+
+		datos[1]="2";
+		datos[2]="3";
+
+		modelo.addRow(datos);
+		
+		
+		
+		
+		
+		/*for (int i = 0; i <15; i++) {
+			
+			DefaultTableModel modelo = (DefaultTableModel)this.table2.getModel();
+			String datos[] = new String[7];
+			for (int j = 0; j<7; j++) {
+			datos[j]="Algo"+j;
 			}
+		
+			modelo.addRow(datos);
+
+			}*/
 		
 		/*
 		for (int i = 0; i < a.size(); i++) {
@@ -239,19 +245,55 @@ public class usuarios{
 		
 		//modelo.addRow(gay,gay2,gay3);
 		}*/
-		ButtonColumn botonEditar = new ButtonColumn(table, editar, 5);
-		botonEditar.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 6);
-		botonEliminar.setMnemonic(KeyEvent.VK_D);
+	
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Peticiones de Compra", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(6, 6, 650, 542);
+		panel_2.add(scrollPane_3);
+		
+		table3 = new JTable();
+		scrollPane_3.setViewportView(table3);
+		table3.setFillsViewportHeight(true);
+		table3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table3.setToolTipText("");
+		
+	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		EntityManager em = fabrica.createEntityManager();
+		em.getTransaction().begin();
+		Query q = em.createQuery("SELECT e FROM Usuario e ");
+		List  a=q.getResultList();*/
+
+		table3.setModel(new DefaultTableModel(
+			new Object[][] {,},
+			new String[] {
+				"Nombre Cliente","Paquete" ,"Fecha","Aprobado"
+			}
+		));
+		
+		
+		table3.getColumnModel().getColumn(0).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(3).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getTableHeader();
 		
 		
 		
 		
+		
+		
+		
+		
+	}
 	}
 
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		this.frame.setVisible(b);
-	}
-	}
 

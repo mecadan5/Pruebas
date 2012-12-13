@@ -40,7 +40,7 @@ import modelo.Usuario;
 
 
 
-public class facturacion {
+public class facturacionDist {
 
 	
 	
@@ -58,7 +58,7 @@ public class facturacion {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					facturacion frame = new facturacion();
+					facturacionDist frame = new facturacionDist();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -70,9 +70,9 @@ public class facturacion {
 	/**
 	 * Create the frame.
 	 */
-	public facturacion() {
+	public facturacionDist() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 960, 7500);
+		frame.setBounds(100, 100, 960, 810);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -115,13 +115,6 @@ public class facturacion {
 		contentPane.add(btnFacturacin);
 		
 		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
-		btnGestionDeUsuarios.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				usuarios usu = new usuarios();
-				usu.setVisible(true);
-				frame.setVisible(false);
-			}
-		});
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		btnGestionDeUsuarios.setIcon(new ImageIcon(this.getClass().getResource("../assets/user.png")));
 		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
@@ -136,11 +129,11 @@ public class facturacion {
 		tabbedPane.addTab("Paquetes", null, panel, null);
 		panel.setLayout(null);
 		
-		JButton btnAgregarPaquete = new JButton("Agregar Paquete");
+		JButton btnAgregarPaquete = new JButton("Comprar Paquete");
 		btnAgregarPaquete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				agregarPaquete agre = new agregarPaquete();
-				agre.setVisible(true);
+				compraPaquete compra = new compraPaquete();
+				compra.setVisible(true);
 			}
 		});
 		btnAgregarPaquete.setBounds(469, 6, 187, 45);
@@ -171,7 +164,7 @@ public class facturacion {
 		table.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre de Paquete" ,"Editar","Borrar"
+				"Nombre de Paquete" ,"Fecha Vencimiento","Estado"
 			}
 		));
 		
@@ -239,7 +232,7 @@ public class facturacion {
 		}*/
 		
 		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-		String datos[] = new String[4];
+		String datos[] = new String[3];
 		datos[0]="1";
 
 		datos[1]="2";
@@ -272,22 +265,6 @@ public class facturacion {
 		table2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		table2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table2.setToolTipText("");
-		//inicio del panel 2
-		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("Peticiones de Compra", null, panel_2, null);
-		panel_2.setLayout(null);
-		
-		JScrollPane scrollPane_3 = new JScrollPane();
-		scrollPane_3.setBounds(6, 6, 650, 542);
-		panel_2.add(scrollPane_3);
-		table3 =new JTable();
-		scrollPane_3.setViewportView(table3);
-		table3.setFillsViewportHeight(true);
-		table3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		table3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table3.setToolTipText("");
-		
-		
 		
 	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = fabrica.createEntityManager();
@@ -295,54 +272,30 @@ public class facturacion {
 		Query q = em.createQuery("SELECT e FROM Usuario e ");
 		List  a=q.getResultList();*/
 		
-		//tabla 2
+		
+								
+		
 		
 		table2.setModel(new DefaultTableModel(
 			new Object[][] {,},
 			new String[] {
-				"Nombre Distribuidor" ,"Mes","Monto","Aprobar","Borrar"
+					"Mes" ,"Aprobada","Monto","Estado"
 			}
 		));
+		
+	
 		table2.getColumnModel().getColumn(0).setPreferredWidth(300);
 		table2.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table2.getColumnModel().getColumn(2).setPreferredWidth(100);
 		table2.getColumnModel().getColumn(3).setPreferredWidth(300);
-		table2.getColumnModel().getColumn(4).setPreferredWidth(100);
+		
+		
 		table2.getTableHeader();
-			int numRows2 = table2.getRowCount();
-			int numCols2 = table2.getColumnCount();
-			
-		//tabla 3
-		table3.setModel(new DefaultTableModel(
-					new Object[][] {,},
-					new String[] {
-						"Nombre Cliente","Paquete" ,"Fecha","Monto","Aprobar","Borrar"
-					}
-				));
-				
-				
-		table3.getColumnModel().getColumn(0).setPreferredWidth(300);
-		table3.getColumnModel().getColumn(1).setPreferredWidth(100);
-		table3.getColumnModel().getColumn(2).setPreferredWidth(100);
-		table3.getColumnModel().getColumn(3).setPreferredWidth(300);
-		table3.getColumnModel().getColumn(4).setPreferredWidth(100);
-		table3.getColumnModel().getColumn(5).setPreferredWidth(100);
-		table3.getTableHeader();
-				
-		int numRows3 = table3.getRowCount();
-		int numCols3 = table3.getColumnCount();
-			
-			
-			
-			Action aprobarCom = new AbstractAction()		{	
-				public void actionPerformed(ActionEvent e)    {
-					JTable table2 = (JTable)e.getSource();
-					int modelRow = Integer.valueOf( e.getActionCommand() );
-						((DefaultTableModel)table2.getModel()).removeRow(modelRow);
-						JOptionPane.showMessageDialog(null,"Hola"); 
-		   	    }
-					};
-	Action eliminarCom = new AbstractAction()
+		
+	int numRows2 = table2.getRowCount();
+		int numCols2 = table2.getColumnCount();
+		
+		javax.swing.Action editarCom = new AbstractAction()
 		{	
 		    public void actionPerformed(ActionEvent e)
 		    {
@@ -353,6 +306,7 @@ public class facturacion {
 		   
 		    }
 		};
+		
 		
 		/*for (int i = 0; i <15; i++) {
 			
@@ -381,22 +335,22 @@ public class facturacion {
 		
 		//modelo.addRow(gay,gay2,gay3);
 		}*/
-		//botones de tabla 2
-		ButtonColumn botonEliminarCom = new ButtonColumn(table2, eliminarCom, 7);
-		botonEliminar.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn botonAprobarCom = new ButtonColumn(table2, aprobarCom, 5);
-		botonEliminar.setMnemonic(KeyEvent.VK_D);
+	
 		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Peticiones de Compra", null, panel_2, null);
+		panel_2.setLayout(null);
 		
-			
-			//botones tala 3
-			ButtonColumn botonEliminarPet = new ButtonColumn(table3, eliminarCom, 6);
-			botonEliminar.setMnemonic(KeyEvent.VK_D);
-			ButtonColumn botonAprobarPet = new ButtonColumn(table3, aprobarCom, 5);
-			botonEliminar.setMnemonic(KeyEvent.VK_D);
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(6, 6, 650, 542);
+		panel_2.add(scrollPane_3);
 		
-		
-		
+		table3 = new JTable();
+		scrollPane_3.setViewportView(table3);
+		table3.setFillsViewportHeight(true);
+		table3.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table3.setToolTipText("");
 		
 	/*Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		EntityManager em = fabrica.createEntityManager();
@@ -404,68 +358,33 @@ public class facturacion {
 		Query q = em.createQuery("SELECT e FROM Usuario e ");
 		List  a=q.getResultList();*/
 
-		
-		Action editarPet = new AbstractAction()
-		{	
-		    public void actionPerformed(ActionEvent e)
-		    {
-		        JTable table3 = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table3.getModel()).removeRow(modelRow);
-		        JOptionPane.showMessageDialog(null,"Hola"); 
-		   
-		    }
-		};
-		Action aprobarPet = new AbstractAction()
-		{	
-		    public void actionPerformed(ActionEvent e)
-		    {
-		        JTable table3 = (JTable)e.getSource();
-		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        ((DefaultTableModel)table3.getModel()).removeRow(modelRow);
-		        JOptionPane.showMessageDialog(null,"Hola"); 
-		   
-		    }
-		};
-		
-		
-		/*for (int i = 0; i <15; i++) {
-			
-			DefaultTableModel modelo = (DefaultTableModel)this.table3.getModel();
-			String datos[] = new String[8];
-			for (int j = 0; j<8; j++) {
-			datos[j]="Algo"+j;
+		table3.setModel(new DefaultTableModel(
+			new Object[][] {,},
+			new String[] {
+				"Nombre Cliente","Paquete" ,"Fecha","Aprobado"
 			}
-			modelo.addRow(datos);
-
-			}*/
-		
-		/*
-		for (int i = 0; i < a.size(); i++) {
-		Usuario usuario1= (Usuario) a.get(i);
-		String b = a.get(i).toString();
-		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-		String datos[] = new String[4];
-		datos[0]=String.valueOf(usuario1.getId());
-		datos[1]=usuario1.getcontrasenia();
-		datos[2]=usuario1.getNombre();
-		datos[3]=b.substring(7);
-		modelo.addRow(datos);
+		));
 		
 		
-		//modelo.addRow(gay,gay2,gay3);
-		}*/
+		table3.getColumnModel().getColumn(0).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(1).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(2).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(3).setPreferredWidth(300);
+		table3.getColumnModel().getColumn(4).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(5).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getColumnModel().getColumn(6).setPreferredWidth(100);
+		table3.getTableHeader();
+		
+	int numRows3 = table2.getRowCount();
+		int numCols3 = table2.getColumnCount();
 		
 		
 		
 		
 		
 		
-	}
-
-	public void setVisible(boolean b) {
-		// TODO Auto-generated method stub
-		this.frame.setVisible(b);
+		
 		
 	}
 	}

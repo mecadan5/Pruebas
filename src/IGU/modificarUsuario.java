@@ -26,7 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class agregarUsuario {
+public class modificarUsuario {
 
 	private JPanel contentPane;
 	private JTextField txtUsuario;
@@ -40,7 +40,7 @@ public class agregarUsuario {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					agregarUsuario frame = new agregarUsuario();
+					modificarUsuario frame = new modificarUsuario();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -53,7 +53,7 @@ public class agregarUsuario {
 	/**
 	 * Create the frame.
 	 */
-	public agregarUsuario() {
+	public modificarUsuario() {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 400, 500);
 		contentPane = new JPanel();
@@ -79,7 +79,7 @@ public class agregarUsuario {
 		contentPane.add(txtContrasea);
 		
 		JLabel lblInicioDeSesion = new JLabel("Agregar Usuario");
-		lblInicioDeSesion.setIcon(new ImageIcon(agregarUsuario.class.getResource("/assets/user.png")));
+		lblInicioDeSesion.setIcon(new ImageIcon(modificarUsuario.class.getResource("/assets/user.png")));
 		lblInicioDeSesion.setFont(new Font("Lucida Grande", Font.PLAIN, 32));
 		lblInicioDeSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInicioDeSesion.setBounds(46, 34, 297, 45);
@@ -96,7 +96,7 @@ public class agregarUsuario {
 				frame.setVisible(false);
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon(agregarUsuario.class.getResource("/assets/plus.png")));
+		btnNewButton.setIcon(new ImageIcon(modificarUsuario.class.getResource("/assets/plus.png")));
 		btnNewButton.setBackground(UIManager.getColor("Button.light"));
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.setBounds(206, 336, 117, 36);
