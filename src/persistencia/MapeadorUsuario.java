@@ -77,7 +77,7 @@ public class MapeadorUsuario {
     }
 
     public MapeadorUsuario() {
-    	fabrica = Persistence.createEntityManagerFactory("PoligamoResponsablePU");
+    	fabrica = Persistence.createEntityManagerFactory("gente");
     	em = fabrica.createEntityManager();
 		// TODO Auto-generated constructor stub
 	}
