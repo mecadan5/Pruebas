@@ -227,8 +227,6 @@ public class facturacion {
 		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
 		String datos[] = new String[4];
 		datos[0]="1";
-		datos[1]="2";
-		datos[2]="3";
 		modelo.addRow(datos);
 		ButtonColumn botonEditar = new ButtonColumn(table, editar,1);
 		botonEditar.setMnemonic(KeyEvent.VK_D);
