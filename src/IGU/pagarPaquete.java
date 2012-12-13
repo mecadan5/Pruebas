@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 import modelo.PaqueteHosting;
+import modelo.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -35,6 +36,7 @@ public class pagarPaquete {
     private JLabel lblNombreDistribuidor;
     private JTextField textField;
     private JTextField textField_1;
+    String namecard;
 
     /**
      * Launch the application.
@@ -43,7 +45,8 @@ public class pagarPaquete {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    pagarPaquete frame = new pagarPaquete();
+                	
+                    pagarPaquete frame = new pagarPaquete(PaqueteHosting a);
                     
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -88,6 +91,10 @@ public class pagarPaquete {
         JButton btnNewButton = new JButton("Pagar");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	TarjetaCredito card = new TarjetaCredito();
+            	card.setClaseDeTarjeta(namecard);
+           	card.setNombrePropietario(text)
+            	
                 JOptionPane.showMessageDialog(null,"Usted ha agregado un nuevo paquete"); 
                 frame.setVisible(false);
             }
@@ -98,20 +105,21 @@ public class pagarPaquete {
         btnNewButton.setBounds(427, 416, 117, 36);
         contentPane.add(btnNewButton);
         
+        
         JComboBox comboBox = new JComboBox();
         comboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JComboBox c= (JComboBox)e.getSource();
                 if (c.getSelectedIndex() == 0)
-                {
-                System.out.println("selecciono visa");
+                {String namecard="visa";
+                System.out.println("visa");
                 }
                 else if (c.getSelectedIndex() == 1)
-                {
+                {String namecard="master";
                 System.out.println("selecciono master");
                 }
                 else if (c.getSelectedIndex() == 2)
-                {
+                {String namecard="american";
                 System.out.println("selecciono american");
                 }
                 
