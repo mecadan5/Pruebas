@@ -55,6 +55,9 @@ public class ClasePrincipal {
 			
 			
 			Distribuidor lo = mc.getDistribuidor();
+			lo.setContrasenia("");
+			lo.setNombre("distri");
+			lo.setContrasenia("distroco");
 			Long sal = lo.getId();
 			System.out.println(sal);
 			map.persistirObjeto(donal);

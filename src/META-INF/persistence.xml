@@ -31,10 +31,11 @@
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 
 			<!-- relacionado a borrar las tablas y la creacion de las mismas  -->
+			<!-- -->
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			 <property name="eclipselink.ddl-generation.output-mode"	value="database" />
 			<property name="eclipselink.jdbc.batch-writing" value="Buffered" />
-			
+			<!-- -->
 		</properties>
 	</persistence-unit>
 </persistence>

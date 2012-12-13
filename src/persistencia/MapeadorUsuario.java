@@ -61,7 +61,7 @@ public class MapeadorUsuario {
             
         } catch (PersistenceException e) {
             e.getCause().toString();
-            em.getTransaction().rollback();
+          //  em.getTransaction().rollback();
         }
     }
     
