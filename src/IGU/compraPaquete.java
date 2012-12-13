@@ -37,6 +37,9 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 
+import modelo.PaqueteHosting;
+import modelo.Usuario;
+
 public class compraPaquete {
 
 	private JPanel contentPane;
@@ -99,12 +102,12 @@ public class compraPaquete {
 	EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
 		EntityManager em = fabrica.createEntityManager();
 		em.getTransaction().begin();
-		Query q = em.createQuery("SELECT e FROM Usuario e ");
+		Query q = em.createQuery("SELECT e FROM PaqueteHosting e ");
 		List  a=q.getResultList();
-		
-		
+		System.out.println(a.size());
 								
-		
+
+	        
 		
 		table.setModel(new DefaultTableModel(
 			new Object[][] {,},
@@ -134,8 +137,8 @@ public class compraPaquete {
 		    {
 		        JTable table = (JTable)e.getSource();
 		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        compraPaquete paquete =new compraPaquete();
-		        JOptionPane.showMessageDialog(null,"Compraste el paquete rechimba"); 
+		       pagarPaquete paquete = new pagarPaquete();
+		        
 		   
 		    }
 		};
@@ -171,21 +174,30 @@ public class compraPaquete {
 		//modelo.addRow(gay,gay2,gay3);
 		}*/
 		
-		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-		String datos[] = new String[7];
-		datos[0]="1";
-		datos[1]="2";
-		datos[2]="3";
-		datos[3]="3";
-		datos[4]="1";
-		datos[5]="2";
-		datos[6]="3";
-
-		modelo.addRow(datos);
+		for (int i = 1; i < a.size(); i++) {
+            
+	        PaqueteHosting pkg1= (PaqueteHosting) a.get(i);
+	        String b = a.get(i).toString();
+	        DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+	        String datos[] = new String[8];
+	        datos[0]=Integer.toString(pkg1.getIdPaquete());
+	        System.out.println(b);
+	        datos[1]=pkg1.getPlataforma();
+	        System.out.println(pkg1.getPlataforma());
+	        datos[2]="ilimitado";
+	        datos[3]=Integer.toString((pkg1.getNumeroBaseDeDatos()));
+	        datos[4]=Integer.toString((pkg1.getCorreosCorportaivos()));
+	        datos[5]=Integer.toString((pkg1.getEspacioendisco()));
+	        datos[6]=pkg1.getVersionPhp();
+	        datos[7]="comprar";
+	        
+	        
+	        
+	        modelo.addRow(datos);}
 		ButtonColumn botonEditar = new ButtonColumn(table, comprar,7);
 		botonEditar.setMnemonic(KeyEvent.VK_D);
-		
-	}
+		}
+	
 
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub

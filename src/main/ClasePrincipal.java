@@ -118,6 +118,44 @@ public class ClasePrincipal {
 			map.persistirObjeto(chequedeprueba2);
 			map.persistirObjeto(chequedeprueba);
 		
+			PaqueteHosting pkgold =new PaqueteHosting();
+			PaqueteHosting pksafir =new PaqueteHosting();
+			PaqueteHosting pkplata =new PaqueteHosting();
+			
+			pkgold.setCorreosCorportaivos(40);
+			pkgold.setPlataforma("wind");
+			pkgold.setNumeroBaseDeDatos(100);
+			pkgold.setVersionPhp("5.1");
+			pkgold.setValorAnual(200000);
+			pkgold.setValorSemestral(100000);
+			pkgold.setValorTrimestral(50000);
+			pkgold.setValorMensual(25000);
+			pkgold.setEspacioendisco(1000);
+			
+			pksafir.setCorreosCorportaivos(20);
+			pksafir.setPlataforma("wind");
+			pksafir.setNumeroBaseDeDatos(50);
+			pksafir.setVersionPhp("5.1");
+			pksafir.setValorAnual(100000);
+			pksafir.setValorSemestral(500000);
+			pksafir.setValorTrimestral(25000);
+			pksafir.setValorMensual(12500);
+			pksafir.setEspacioendisco(1000);
+			
+			pkplata.setCorreosCorportaivos(10);
+			pkplata.setPlataforma("wind");
+			pkplata.setNumeroBaseDeDatos(25);
+			pkplata.setVersionPhp("5.1");
+			pkplata.setValorAnual(50000);
+			pkplata.setValorSemestral(25000);
+			pkplata.setValorTrimestral(12500);
+			pkplata.setValorMensual(6250);
+			pkplata.setEspacioendisco(1000);
+			
+			map.persistirObjeto(pkplata);
+			map.persistirObjeto(pkgold);
+			map.persistirObjeto(pksafir);
+			
 		
 	}
 	

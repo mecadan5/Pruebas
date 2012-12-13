@@ -146,10 +146,10 @@ public class panelCliente {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
-	EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
+		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
 		EntityManager em = fabrica.createEntityManager();
 		em.getTransaction().begin();
-		Query q = em.createQuery("SELECT e FROM Usuario e ");
+		Query q = em.createQuery("SELECT e FROM PaqueteHosting e ");
 		List  a=q.getResultList();
 		
 		
