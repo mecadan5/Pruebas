@@ -141,15 +141,14 @@ public class login extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				System.out.println("antes");
+				
 				fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 				EntityManager em = fabrica.createEntityManager();
 				em.getTransaction().begin();
-				
-				System.out.println("medio");
+							
 				Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre ");
 				//AND e.contrasenia = :contrasenia
-				System.out.println("despues");
+				
 				q.setParameter("primerNombre", getUsuario());
 				Usuario usuario1 = (Usuario) q.getSingleResult();
 								List a = q.getResultList();
