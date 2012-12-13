@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-import modelo.Esposa;
+
 import modelo.Usuario;
 
 import org.omg.CORBA.PRIVATE_MEMBER;

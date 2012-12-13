@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JButton;
 
-<<<<<<< HEAD
+
 
 
 import modelo.Usuario;
@@ -30,22 +30,17 @@ import modelo.Usuario;
 
 
 
-
-=======
-import modelo.Usuario;
-
->>>>>>> 176bda5641f98fe96c81a191fbccb6d209ce3dbb
 import java.awt.SystemColor;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-<<<<<<< HEAD
+
 public class login extends JFrame {
-=======
-public class login {
->>>>>>> 176bda5641f98fe96c81a191fbccb6d209ce3dbb
+
+
+
 
 	private JPanel contentPane;
 	private JTextField txtUsuario;
@@ -55,11 +50,11 @@ public class login {
 	private static final String PERSISTENCE_UNIT_NAME = "gente";
 	private EntityManagerFactory fabrica;
 	
-<<<<<<< HEAD
-=======
+
+
 	JFrame frame = new JFrame();
 
->>>>>>> 176bda5641f98fe96c81a191fbccb6d209ce3dbb
+
 	public String getUsuario() {
 		this.usuario = txtUsuario.getText();
 		return usuario;
@@ -73,8 +68,7 @@ public class login {
 		this.contasenia = txtContrasea.getText();
 		return contasenia;
 	}
-<<<<<<< HEAD
-=======
+
 
 	public void setContasenia(String contasenia) {
 		this.contasenia = contasenia;
@@ -88,7 +82,7 @@ public class login {
 			public void run() {
 				try {
 					login frame = new login();
-
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -198,7 +192,7 @@ public class login {
 		});
 		btnNewButton.setBounds(237, 391, 117, 36);
 		contentPane.add(btnNewButton);
->>>>>>> 176bda5641f98fe96c81a191fbccb6d209ce3dbb
+
 
 	}
 
