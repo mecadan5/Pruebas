@@ -141,50 +141,52 @@ public class login extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-
-				fabrica = Persistence
-						.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+				System.out.println("antes");
+				fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 				EntityManager em = fabrica.createEntityManager();
 				em.getTransaction().begin();
-				Query q = em
-						.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre AND e.contrasenia = :contrasenia");
-				q.setParameter("primerNombre", getUsuario());// campo de arriba
-																// "Juana_0"
-																// getUsuario()
-																// "sssss"
-				q.setParameter("contrasenia", getContasenia());// campo de abajo
-																// "de Asnab"
-																// getContasenia()
-																// "sss"
+				
+				System.out.println("medio");
+				Query q = em.createQuery("SELECT e FROM Usuario e WHERE e.nombre = :primerNombre ");
+				//AND e.contrasenia = :contrasenia
+				System.out.println("despues");
+				q.setParameter("primerNombre", getUsuario());
 				Usuario usuario1 = (Usuario) q.getSingleResult();
-				List a = q.getResultList();
+								List a = q.getResultList();
 				a.size();
 				String b = a.get(0).toString();
-				if (b.indexOf("Registrador") == 7) {
-					System.out.println("Es registrador");
-					IguRegistrador frame = new IguRegistrador();
-					frame.setVisible(true);
-					contentPane.setVisible(false);
+				
+				System.out.println(b);
+				System.out.println("contrase"+usuario1.getContrasenia());
+				if (b.indexOf("Administrador") == 7) {
+					System.out.println("Es Administradorr");
+					//IguRegistrador frame = new IguRegistrador();
+					//frame.setVisible(true);
+					//contentPane.setVisible(false);
 				}
-				if (b.indexOf("Esposa") == 7) {
-					System.out.println("Es Esposa");
-					JOptionPane
-							.showMessageDialog(null,
+				if (b.indexOf("Cliente") == 7) {
+					System.out.println("Es Cliente");
+					JOptionPane.showMessageDialog(null,
 									"El Aplicativo no esta preparado para los beneficiarios pronto estara");
 				}
-				if (b.indexOf("Poligamo") == 7) {
-					System.out.println("Es Poligamo");
-					JOptionPane
-							.showMessageDialog(null,
+				if (b.indexOf("Distribuidor") == 7) {
+					System.out.println("Es Distribuidor");
+					JOptionPane.showMessageDialog(null,
 									"El Aplicativo no esta preparado para los Afiliados pronto estara");
 				}
-				if (b.indexOf("Administrador") == 7) {
-					System.out.println("Administrador");
-					IguAdministrador frame = new IguAdministrador();
-					frame.setVisible(true);
-					contentPane.setVisible(false);
+				if (b.indexOf("AsesorComercial") == 7) {
+					System.out.println("AsesorComercial");
+					//IguAdministrador frame = new IguAdministrador();
+					//frame.setVisible(true);
+					//contentPane.setVisible(false);
 				}
-				System.out.println(usuario1.getContrasenia());
+				if (b.indexOf("RevisorCompra") == 7) {
+					System.out.println("RevisorCompra");
+					//IguAdministrador frame = new IguAdministrador();
+					//frame.setVisible(true);
+					//contentPane.setVisible(false);
+				}
+				
 				em.getTransaction().commit();
 				em.close();
 
