@@ -320,7 +320,11 @@ public class facturacion {
         int numRows3 = table3.getRowCount();
         int numCols3 = table3.getColumnCount();
             
-            
+            ///
+        
+        
+        
+        
             
             Action aprobarCom = new AbstractAction()        {    
                 public void actionPerformed(ActionEvent e)    {

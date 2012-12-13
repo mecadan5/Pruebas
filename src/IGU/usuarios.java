@@ -35,6 +35,10 @@ import javax.swing.JTable;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+
+import modelo.PaqueteHosting;
+import modelo.Usuario;
+
 import java.awt.Color;
 import java.util.List;
 
@@ -44,7 +48,9 @@ public class usuarios{
 	private static final String PERSISTENCE_UNIT_NAME = "gente";
 	private JPanel contentPane;
 	private JTextField txtIntroduzcaNombreUsuario;
-	private JTable table;JFrame frame= new JFrame();
+	private JTable table;
+	private JTable tablez;
+	JFrame frame= new JFrame();
 
 	/**
 	 * Launch the application.
@@ -162,11 +168,19 @@ public class usuarios{
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setToolTipText("");
 		
-		Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		EntityManager em = ((EntityManagerFactory) fabrica).createEntityManager();
-		em.getTransaction().begin();
-		Query q = em.createQuery("SELECT e FROM Usuario e ");
-		List  a=q.getResultList();
+		
+		JTable table2 = new JTable();
+		scrollPane.setViewportView(table2);
+		table2.setFillsViewportHeight(true);
+		table2.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table2.setToolTipText("");
+		
+		//Object fabrica = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		//EntityManager em = ((EntityManagerFactory) fabrica).createEntityManager();
+		//em.getTransaction().begin();
+		//Query q = em.createQuery("SELECT e FROM Usuario e ");
+		//List  a=q.getResultList();
 		
 								
 		
@@ -177,6 +191,70 @@ public class usuarios{
 				"Nombre", "E-Mail" ,"Tipo De Usuario","Editar","Borrar"
 			}
 		));
+		
+		
+		///
+		
+		JTable tablez = new JTable();
+		scrollPane.setViewportView(tablez);
+		tablez.setFillsViewportHeight(true);
+		tablez.setBorder( new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		tablez.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tablez.setToolTipText("");
+		
+		EntityManagerFactory fabrica2 = Persistence.createEntityManagerFactory("gente");
+		EntityManager em2 = fabrica2.createEntityManager();
+		em2.getTransaction().begin();
+		Query q2 = em2.createQuery("SELECT e FROM Usuario e ");
+		List  a2=q2.getResultList();
+		System.out.println(a2.size());
+								
+
+	        
+		
+		tablez.setModel(new DefaultTableModel(
+			new Object[][] {,},
+			new String[] {
+					"Nombre", "E-Mail" ,"Tipo De Usuario","Editar","Borrar"
+			}
+		));
+		
+		
+		
+		tablez.getColumnModel().getColumn(0).setPreferredWidth(300);
+		tablez.getColumnModel().getColumn(1).setPreferredWidth(100);
+		tablez.getColumnModel().getColumn(2).setPreferredWidth(100);
+		tablez.getColumnModel().getColumn(3).setPreferredWidth(100);
+		tablez.getColumnModel().getColumn(4).setPreferredWidth(100);
+		
+		
+		tablez.getTableHeader();
+		int numRows = tablez.getRowCount();
+		int numCols = tablez.getColumnCount();
+		
+		for (int i = 1; i < a2.size(); i++) {
+            
+	        Usuario pkg1= (Usuario) a2.get(i);
+	        String b = a2.get(i).toString();
+	       // DefaultTableModel modelo2 = (DefaultTableModel)this.tablez.getModel();
+	        DefaultTableModel modelo2= (DefaultTableModel)this.tablez.getModel();
+	        String datos[] = new String[5];
+	        datos[0]="a";
+	        System.out.println(b);
+	        datos[1]=pkg1.getEmail();
+	        System.out.println(pkg1.getNombre());
+	        datos[2]="ilimitado";
+	        datos[3]="editar";
+	        datos[4]="borrar";
+	        
+	        
+	        
+	        
+	        modelo2.addRow(datos);}
+		
+		
+		
+		///
 		table.getColumnModel().getColumn(0).setPreferredWidth(180);
 		table.getColumnModel().getColumn(1).setPreferredWidth(100);
 		table.getColumnModel().getColumn(2).setPreferredWidth(100);
@@ -185,8 +263,20 @@ public class usuarios{
 
 		table.getTableHeader();
 		
-		int numRows = table.getRowCount();
-		int numCols = table.getColumnCount();
+		int numRows2 = table.getRowCount();
+		int numCols2 = table.getColumnCount();
+		/*
+		for (int i = 0; i < a.size(); i++) {
+			Usuario usuario1= (Usuario) a.get(i);
+			String b = a.get(i).toString();
+			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+			String datos[] = new String[5];
+			datos[0]=usuario1.getNombre();
+			datos[1]=usuario1.getEmail();
+			datos[2]=b;
+			datos[3]="borrar";
+			datos[4]="editar";
+			modelo.addRow(datos);}*/
 		
 		Action editar = new AbstractAction()
 		{	
@@ -211,37 +301,17 @@ public class usuarios{
 		    }
 		};
 		
-		for (int i = 0; i <15; i++) {
-			
-			DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-			String datos[] = new String[3];
-			
-			for (int j = 0; j<3; j++) {
-			datos[j]="Algo"+j;
-			}
 		
-			modelo.addRow(datos);
-
-			}
 		
-		/*
-		for (int i = 0; i < a.size(); i++) {
-		Usuario usuario1= (Usuario) a.get(i);
-		String b = a.get(i).toString();
-		DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-		String datos[] = new String[4];
-		datos[0]=String.valueOf(usuario1.getId());
-		datos[1]=usuario1.getcontrasenia();
-		datos[2]=usuario1.getNombre();
-		datos[3]=b.substring(7);
-		modelo.addRow(datos);
+		
+		
 		
 		
 		//modelo.addRow(gay,gay2,gay3);
-		}*/
-		ButtonColumn botonEditar = new ButtonColumn(table, editar, 5);
+		
+		ButtonColumn botonEditar = new ButtonColumn(tablez, editar, 5);
 		botonEditar.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 6);
+		ButtonColumn botonEliminar = new ButtonColumn(tablez, eliminar, 6);
 		botonEliminar.setMnemonic(KeyEvent.VK_D);
 		
 		

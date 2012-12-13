@@ -130,6 +130,27 @@ public class compraPaquete {
 		table.getTableHeader();
 		int numRows = table.getRowCount();
 		int numCols = table.getColumnCount();
+		for (int i = 1; i < a.size(); i++) {
+            
+	        PaqueteHosting pkg1= (PaqueteHosting) a.get(i);
+	        String b = a.get(i).toString();
+	        DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
+	        String datos[] = new String[8];
+	        datos[0]=Integer.toString(pkg1.getIdPaquete());
+	        System.out.println(b);
+	        datos[1]=pkg1.getPlataforma();
+	        System.out.println(pkg1.getPlataforma());
+	        datos[2]="ilimitado";
+	        datos[3]=Integer.toString((pkg1.getNumeroBaseDeDatos()));
+	        datos[4]=Integer.toString((pkg1.getCorreosCorportaivos()));
+	        datos[5]=Integer.toString((pkg1.getEspacioendisco()));
+	        datos[6]=pkg1.getVersionPhp();
+	        datos[7]="comprar";
+	        
+	        
+	        
+	        modelo.addRow(datos);}
+		
 		
 		Action comprar = new AbstractAction()
 		{	
@@ -188,26 +209,7 @@ public class compraPaquete {
 		//modelo.addRow(gay,gay2,gay3);
 		}*/
 		
-		for (int i = 1; i < a.size(); i++) {
-            
-	        PaqueteHosting pkg1= (PaqueteHosting) a.get(i);
-	        String b = a.get(i).toString();
-	        DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-	        String datos[] = new String[8];
-	        datos[0]=Integer.toString(pkg1.getIdPaquete());
-	        System.out.println(b);
-	        datos[1]=pkg1.getPlataforma();
-	        System.out.println(pkg1.getPlataforma());
-	        datos[2]="ilimitado";
-	        datos[3]=Integer.toString((pkg1.getNumeroBaseDeDatos()));
-	        datos[4]=Integer.toString((pkg1.getCorreosCorportaivos()));
-	        datos[5]=Integer.toString((pkg1.getEspacioendisco()));
-	        datos[6]=pkg1.getVersionPhp();
-	        datos[7]="comprar";
-	        
-	        
-	        
-	        modelo.addRow(datos);}
+		
 		
 		ButtonColumn botonEditar = new ButtonColumn(table, comprar,7);
 		
