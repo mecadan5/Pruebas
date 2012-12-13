@@ -221,18 +221,7 @@ public class facturacion {
             }*/
         
         /*
-        for (int i = 0; i < a.size(); i++) {
-            
-        Usuario usuario1= (Usuario) a.get(i);
-        String b = a.get(i).toString();
-        DefaultTableModel modelo = (DefaultTableModel)this.table.getModel();
-        String datos[] = new String[4];
-        datos[0]=String.valueOf(usuario1.getId());
-        datos[1]=usuario1.getcontrasenia();
-        datos[2]=usuario1.getNombre();
-        datos[3]=b.substring(7);
-        modelo.addRow(datos);
-        
+        ;',m
         
         //modelo.addRow(gay,gay2,gay3);
         }*/

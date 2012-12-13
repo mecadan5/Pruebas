@@ -37,8 +37,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 
-import modelo.PaqueteHosting;
-import modelo.Usuario;
+import modelo.*;
+
 
 public class compraPaquete {
 
@@ -135,11 +135,25 @@ public class compraPaquete {
 		{	
 		    public void actionPerformed(ActionEvent e)
 		    {
+		    	
+		    	System.out.println(table.getValueAt(0, 0));
+		    	
+		    	System.out.println(table.getSelectedRow());
 		        JTable table = (JTable)e.getSource();
 		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		       pagarPaquete paquete = new pagarPaquete();
-		        
-		   
+		        EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("gente");
+				EntityManager em = fabrica.createEntityManager();
+				em.getTransaction().begin();
+				//Query q = em.createQuery("SELECT e FROM PaqueteHosting e WHERE e.idpaquete = :primerNombre ");
+				//q.setParameter("primerNombre", table.getValueAt(0, table.getSelectedRow()));
+				
+				int x=Integer.parseInt((String) table.getValueAt(table.getSelectedRow(),0));
+				System.out.println(x);
+				PaqueteHosting pk = em.find( PaqueteHosting.class, x );
+				//pk=(PaqueteHosting) em.find(Class pk.getClass() , (table.getValueAt(0, table.getSelectedRow())));
+				
+				System.out.println(pk.getIdPaquete());
+		       pagarPaquete paquete = new pagarPaquete(pk);
 		    }
 		};
 		
@@ -194,7 +208,9 @@ public class compraPaquete {
 	        
 	        
 	        modelo.addRow(datos);}
+		
 		ButtonColumn botonEditar = new ButtonColumn(table, comprar,7);
+		
 		botonEditar.setMnemonic(KeyEvent.VK_D);
 		}
 	

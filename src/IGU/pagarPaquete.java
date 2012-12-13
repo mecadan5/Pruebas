@@ -20,6 +20,9 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+
+import modelo.PaqueteHosting;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -52,7 +55,7 @@ public class pagarPaquete {
     /**
      * Create the frame.
      */
-    public pagarPaquete() {
+    public pagarPaquete(PaqueteHosting pa) {
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setBounds(100, 100, 599, 502);
         contentPane = new JPanel();
