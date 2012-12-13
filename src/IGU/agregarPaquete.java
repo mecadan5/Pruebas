@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.JLabel;
@@ -18,8 +20,10 @@ import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class agregarPaquete extends JFrame {
+public class agregarPaquete {
 
 	private JPanel contentPane;
 	private JTextField txtUsuario;
@@ -31,6 +35,7 @@ public class agregarPaquete extends JFrame {
 	private JTextField txtValorMensual;
 	private JTextField txtValorSemestral;
 	private JTextField txtValorTrimestral;
+	JFrame frame= new JFrame();
 
 	/**
 	 * Launch the application.
@@ -40,7 +45,7 @@ public class agregarPaquete extends JFrame {
 			public void run() {
 				try {
 					agregarPaquete frame = new agregarPaquete();
-					frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,13 +57,14 @@ public class agregarPaquete extends JFrame {
 	 * Create the frame.
 	 */
 	public agregarPaquete() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 596, 550);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setBounds(100, 100, 596, 550);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+		frame.setContentPane(contentPane);
 		contentPane.setLayout(null);
+		frame.setVisible(true);
 		
 		txtUsuario = new JTextField();
 		txtUsuario.setForeground(UIManager.getColor("Button.disabledText"));
@@ -89,6 +95,12 @@ public class agregarPaquete extends JFrame {
 		contentPane.add(lblUsuario);
 		
 		JButton btnNewButton = new JButton("Agregar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Usted ha agregado un nuevo paquete"); 
+				frame.setVisible(false);
+			}
+		});
 		btnNewButton.setIcon(new ImageIcon(agregarPaquete.class.getResource("/assets/plus.png")));
 		btnNewButton.setBackground(UIManager.getColor("Button.light"));
 		btnNewButton.setForeground(Color.BLACK);
@@ -160,5 +172,10 @@ public class agregarPaquete extends JFrame {
 		txtValorTrimestral.setBackground(Color.WHITE);
 		txtValorTrimestral.setBounds(439, 385, 117, 45);
 		contentPane.add(txtValorTrimestral);
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		this.frame.setVisible(b);
 	}
 }
