@@ -134,7 +134,7 @@ public class compraPaquete {
 		    {
 		        JTable table = (JTable)e.getSource();
 		        int modelRow = Integer.valueOf( e.getActionCommand() );
-		        
+		        compraPaquete paquete =new compraPaquete();
 		        JOptionPane.showMessageDialog(null,"Compraste el paquete rechimba"); 
 		   
 		    }

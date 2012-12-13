@@ -71,7 +71,7 @@ public class facturacionDist {
 	 * Create the frame.
 	 */
 	public facturacionDist() {
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 960, 810);
 		contentPane = new JPanel();
 		contentPane.setBackground(UIManager.getColor("ComboBox.buttonBackground"));
@@ -91,17 +91,13 @@ public class facturacionDist {
 		lblInicioDeSesion.setBounds(612, 43, 232, 25);
 		contentPane.add(lblInicioDeSesion);
 		
-		JLabel lblUsuario_1 = new JLabel("Usuario");
+		JLabel lblUsuario_1 = new JLabel("Distribuidor");
 		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario_1.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 16));
 		lblUsuario_1.setBounds(843, 43, 86, 25);
 		contentPane.add(lblUsuario_1);
 		
-		JLabel lblRolDeUsuario = new JLabel("Rol de Usuario");
-		lblRolDeUsuario.setHorizontalAlignment(SwingConstants.LEFT);
-		lblRolDeUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lblRolDeUsuario.setBounds(837, 69, 92, 25);
-		contentPane.add(lblRolDeUsuario);
+		
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		btnFacturacin.setEnabled(false);
@@ -112,13 +108,13 @@ public class facturacionDist {
 			}
 		});
 		btnFacturacin.setBounds(6, 141, 221, 84);
-		contentPane.add(btnFacturacin);
+		//contentPane.add(btnFacturacin);
 		
 		JButton btnGestionDeUsuarios = new JButton("Gestion de Usuarios");
 		btnGestionDeUsuarios.setFont(new Font("Lucida Grande", Font.PLAIN, 14));
 		btnGestionDeUsuarios.setIcon(new ImageIcon(this.getClass().getResource("../assets/user.png")));
 		btnGestionDeUsuarios.setBounds(6, 249, 221, 84);
-		contentPane.add(btnGestionDeUsuarios);
+		//contentPane.add(btnGestionDeUsuarios);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		
@@ -239,10 +235,7 @@ public class facturacionDist {
 		datos[2]="3";
 
 		modelo.addRow(datos);
-		ButtonColumn botonEditar = new ButtonColumn(table, editar,1);
-		botonEditar.setMnemonic(KeyEvent.VK_D);
-		ButtonColumn botonEliminar = new ButtonColumn(table, eliminar, 2);
-		botonEliminar.setMnemonic(KeyEvent.VK_D);
+	
 		
 		
 		
@@ -386,6 +379,11 @@ public class facturacionDist {
 		
 		
 		
+	}
+
+	public void setVisible(boolean b) {
+		// TODO Auto-generated method stub
+		this.frame.setVisible(b);
 	}
 	}
 

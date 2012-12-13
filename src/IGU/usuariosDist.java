@@ -38,7 +38,7 @@ import javax.swing.JTextField;
 import java.awt.Color;
 import java.util.List;
 
-public class usuarios{
+public class usuariosDist{
 
 	
 	private static final String PERSISTENCE_UNIT_NAME = "gente";
@@ -53,7 +53,7 @@ public class usuarios{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					usuarios frame = new usuarios();
+					usuariosDist frame = new usuariosDist();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,7 +65,7 @@ public class usuarios{
 	/**
 	 * Create the frame.
 	 */
-	public usuarios() {
+	public usuariosDist() {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setBounds(100, 100, 960, 750);
 		contentPane = new JPanel();
@@ -87,17 +87,13 @@ public class usuarios{
 		lblInicioDeSesion.setBounds(612, 43, 232, 25);
 		contentPane.add(lblInicioDeSesion);
 		
-		JLabel lblUsuario_1 = new JLabel("Usuario");
+		JLabel lblUsuario_1 = new JLabel("Distribuidor");
 		lblUsuario_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario_1.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 16));
 		lblUsuario_1.setBounds(843, 43, 86, 25);
 		contentPane.add(lblUsuario_1);
 		
-		JLabel lblRolDeUsuario = new JLabel("Rol de Usuario");
-		lblRolDeUsuario.setHorizontalAlignment(SwingConstants.LEFT);
-		lblRolDeUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-		lblRolDeUsuario.setBounds(837, 69, 92, 25);
-		contentPane.add(lblRolDeUsuario);
+		
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		btnFacturacin.setFont(new Font("Lucida Grande", Font.PLAIN, 15));

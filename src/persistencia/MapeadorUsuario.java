@@ -54,7 +54,7 @@ public class MapeadorUsuario {
     public void persistirObjeto(Object objeto){
         em.getTransaction().begin();
         try{
-            System.out.println("objeto cliente: " + objeto);
+            System.out.println("objeto: " + objeto);
             em.persist(objeto);
             em.getTransaction().commit();
             

@@ -23,7 +23,7 @@ import java.awt.Button;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class entrada  {
+public class entradaDist  {
 
 	private JPanel contentPane;
 	JFrame frame= new JFrame();
@@ -34,7 +34,7 @@ public class entrada  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					entrada frame = new entrada();
+					entradaDist frame = new entradaDist();
 					
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +46,7 @@ public class entrada  {
 	/**
 	 * Create the frame.
 	 */
-	public entrada() {
+	public entradaDist() {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(100, 100, 550, 400);
 		contentPane = new JPanel();
@@ -66,14 +66,14 @@ public class entrada  {
 		lblInicioDeSesion.setBounds(124, 113, 266, 45);
 		contentPane.add(lblInicioDeSesion);
 		
-		JLabel lblUsuario = new JLabel("Administrador");
+		JLabel lblUsuario = new JLabel("Distribuidor");
 		lblUsuario.setForeground(new Color(204, 153, 0));
 		lblUsuario.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setBounds(124, 157, 266, 16);
 		contentPane.add(lblUsuario);
 		
-		
+	
 		
 		JButton btnFacturacin = new JButton("Facturaci\u00F3n");
 		frame.setVisible(true);
@@ -81,8 +81,8 @@ public class entrada  {
 			@Override
 			
 			public void mouseClicked(MouseEvent arg0) {
-				facturacion facti = new facturacion();
-				facti.setVisible(true);
+				facturacionDist factur = new facturacionDist();
+				factur.setVisible(true);
 				frame.setVisible(false);
 				
 			}
@@ -97,8 +97,8 @@ public class entrada  {
 		btnGestionDeUsuarios.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				usuarios prue = new usuarios();
-				prue.setVisible(true);
+				usuariosDist prues = new usuariosDist();
+				prues.setVisible(true);
 				frame.setVisible(false);
 				
 			}

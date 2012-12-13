@@ -43,7 +43,14 @@ public class ClasePrincipal {
 			MapeadorUsuario	map=new MapeadorUsuario();	
 			Cliente  mc =new Cliente();
 			mc.setEmail("funcionando");
+			mc.setNombre("cliente");
+			mc.setContrasenia("cliente");
 			
+			Cliente clie = new Cliente();
+			clie.setEmail("a22");
+			clie.setContrasenia("clo");
+			clie.setNombre("clo");
+			map.persistirObjeto(clie);
 			
 			
 			Distribuidor donal =new Distribuidor();
@@ -52,12 +59,12 @@ public class ClasePrincipal {
 			map.persistirObjeto(mc);
 			
 			donal.setEmail("email 2");
-			
+			map.persistirObjeto(mc);
 			
 			Distribuidor lo = mc.getDistribuidor();
 			lo.setContrasenia("");
 			lo.setNombre("distri");
-			lo.setContrasenia("distroco");
+			lo.setContrasenia("distri");
 			Long sal = lo.getId();
 			System.out.println(sal);
 			map.persistirObjeto(donal);
